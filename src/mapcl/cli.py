@@ -9,6 +9,13 @@ import sys
 from collections import Counter
 
 
+def _positive_int(value: str) -> int:
+    number = int(value)
+    if number < 1:
+        raise argparse.ArgumentTypeError("must be a positive integer")
+    return number
+
+
 def _llm_args(p: argparse.ArgumentParser, optional: bool) -> None:
     from .llm import DEFAULT_MODEL, DEFAULT_REASONING_EFFORT
 
@@ -47,6 +54,7 @@ def _cmd_map(args) -> int:
     mapper = CellOntologyMapper(
         llm, expand=args.expand, assess=not args.no_assess, study_context=args.context,
         min_score=args.min_score, max_concurrency=args.workers,
+        ols_concurrency=args.ols_workers,
     )
     df = read_table(args.input)
     out = map_dataframe(df, args.label_col, tissue_col=args.tissue_col,
@@ -93,7 +101,10 @@ def build_parser() -> argparse.ArgumentParser:
     m.add_argument("--no-assess", action="store_true",
                    help="skip LLM assessment (use with --expand)")
     m.add_argument("--min-score", type=int, default=6, help="lowest accepted LLM score (1-10)")
-    m.add_argument("--workers", type=int, default=4, help="labels processed in parallel")
+    m.add_argument("--workers", type=_positive_int, default=10,
+                   help="labels processed in parallel; bounds simultaneous LLM calls (default %(default)s)")
+    m.add_argument("--ols-workers", type=_positive_int, default=5,
+                   help="maximum simultaneous OLS searches (default %(default)s)")
     _llm_args(m, optional=True)
     m.set_defaults(func=_cmd_map)
 

@@ -102,7 +102,7 @@ def make_chat_model(
     else:
         kwargs.setdefault("temperature", 0)
     kwargs.setdefault("max_retries", 1)
-    kwargs.setdefault("timeout", 100)
+    kwargs.setdefault("timeout", 90)
     return init_chat_model(model, **kwargs)
 
 

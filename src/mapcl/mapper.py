@@ -20,6 +20,7 @@ import logging
 import re
 from collections.abc import Iterable, Sequence
 from dataclasses import asdict, dataclass, replace
+from threading import BoundedSemaphore
 
 from langchain_core.language_models import BaseChatModel
 from langchain_core.runnables import RunnableLambda
@@ -96,7 +97,7 @@ class CellOntologyMapper:
 
     Args:
         llm: LangChain chat model or "provider:model" string. ``None`` runs
-            without an LLM (direct match + OLS top hit).
+            without an LLM (direct match + lexical OLS matching).
         expand: ask the LLM for the standard name before searching.
         assess: let the LLM score candidates and reject weak ones.
         study_context: free text added to every LLM prompt, e.g. "human PBMC, COVID-19".
@@ -104,7 +105,8 @@ class CellOntologyMapper:
         top_k: OLS hits requested per search query.
         max_candidates: candidates shown to the LLM after merging queries.
         fallback_ontologies: searched when no CL candidate passes the assessment.
-        max_concurrency: queries processed in parallel.
+        max_concurrency: queries processed in parallel; also bounds simultaneous LLM calls.
+        ols_concurrency: maximum simultaneous OLS searches, independent of LLM calls.
         ontology, ols: override the bundled CL table or the OLS client (tests).
     """
 
@@ -119,10 +121,13 @@ class CellOntologyMapper:
         top_k: int = 5,
         max_candidates: int = 8,
         fallback_ontologies: Sequence[str] = ("ncit", "bto"),
-        max_concurrency: int = 4,
+        max_concurrency: int = 10,
+        ols_concurrency: int = 5,
         ontology: CellOntology | None = None,
         ols: OLSClient | None = None,
     ):
+        if max_concurrency < 1 or ols_concurrency < 1:
+            raise ValueError("max_concurrency and ols_concurrency must be positive")
         if isinstance(llm, str):
             llm = llm_mod.make_chat_model(llm)
         if expand and llm is None:
@@ -134,6 +139,7 @@ class CellOntologyMapper:
         self.max_candidates = max_candidates
         self.fallback_ontologies = tuple(fallback_ontologies)
         self.max_concurrency = max_concurrency
+        self._ols_slots = BoundedSemaphore(ols_concurrency)
         self.ontology = ontology or load_bundled()
         self.ols = ols or OLSClient()
         self._expand = llm_mod.expansion_chain(llm) if llm is not None and expand else None
@@ -213,7 +219,8 @@ class CellOntologyMapper:
                   hint: str, tried: set[str]) -> bool:
         """Search CL with ``queries`` and choose a term; True if one is accepted.
 
-        Candidates already rejected in an earlier round are not scored again.
+        Skip assessment only when every candidate was already rejected in an
+        earlier round; otherwise assess the current candidate set.
         """
         if self._assess is None:
             return bool(self._lexical(res, q, queries, set(expanded)).mapped_id)
@@ -252,7 +259,8 @@ class CellOntologyMapper:
         """OLS search; drops terms restricted to another species or to non-vertebrates."""
         if not any(len(t) > 1 for t in content_tokens(query)):
             return []  # single letters ("B") are slow and useless OLS queries
-        hits = self.ols.search(query, ontologies, rows=self.top_k)
+        with self._ols_slots:
+            hits = self.ols.search(query, ontologies, rows=self.top_k)
         keep = []
         for h in map(self._enrich, hits):
             tx = taxon(h.label) if h.ontology == "CL" else None

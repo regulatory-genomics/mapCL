@@ -6,7 +6,7 @@ from langchain_core.language_models.fake_chat_models import GenericFakeChatModel
 from langchain_core.messages import AIMessage
 
 from mapcl.agent import build_agent
-from mapcl.cli import main
+from mapcl.cli import build_parser, main
 from mapcl.io import OUTPUT_COLUMNS, map_adata, map_dataframe, map_labels
 from mapcl.mapper import CellOntologyMapper
 
@@ -67,6 +67,24 @@ def test_cli_map_without_llm(tmp_path, monkeypatch, ontology):
 def test_cli_expand_needs_model(tmp_path, monkeypatch):
     monkeypatch.delenv("MAPCL_MODEL", raising=False)
     assert main(["map", "x.tsv", "-o", "y.tsv", "-c", "l", "--expand", "--no-llm"]) == 2
+
+
+def test_cli_concurrency_defaults_and_overrides():
+    parser = build_parser()
+    argv = ["map", "in.tsv", "-o", "out.tsv", "-c", "label"]
+    defaults = parser.parse_args(argv)
+    assert (defaults.workers, defaults.ols_workers) == (10, 5)
+    custom = parser.parse_args([*argv, "--workers", "16", "--ols-workers", "2"])
+    assert (custom.workers, custom.ols_workers) == (16, 2)
+
+
+@pytest.mark.parametrize("option", ["--workers", "--ols-workers"])
+@pytest.mark.parametrize("value", ["0", "-1"])
+def test_cli_rejects_nonpositive_concurrency(option, value):
+    with pytest.raises(SystemExit) as exc:
+        build_parser().parse_args(["map", "in.tsv", "-o", "out.tsv", "-c", "label",
+                                   option, value])
+    assert exc.value.code == 2
 
 
 class ToolFakeChat(GenericFakeChatModel):

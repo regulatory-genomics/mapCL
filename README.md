@@ -79,6 +79,8 @@ mapcl map cells.tsv -o mapped.tsv -c cell_type --no-llm
 cluster labels. `mapcl map -h` lists the other options (species column, study
 context, score cutoff).
 
+Batch mapping defaults to 10 label workers (`--workers`) and at most 5 simultaneous OLS searches (`--ols-workers`), allowing LLM requests to overlap without increasing candidate counts.
+
 In Python:
 
 ```python

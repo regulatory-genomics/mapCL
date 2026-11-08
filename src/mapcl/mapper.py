@@ -45,8 +45,8 @@ from .text import (
 AMBIGUOUS_HINT = ("If the label is an abbreviation with several plausible meanings and the "
                   "context does not decide between them, score at most 5.")
 RESOLVED_HINT = ("The label was interpreted as '{expanded}', which is the CL term '{term}'. "
-                 "Judge the candidates against this interpretation; do not lower the score "
-                 "only because the label is an abbreviation.")
+                 "Check that this reading fits the label and context; if it does, do not "
+                 "lower the score only because the label is an abbreviation.")
 _TAXON_TOKENS = frozenset({"mmus", "primate", "human", "mouse", "homo", "sapien", "sapiens", "sensu"})
 
 logger = logging.getLogger(__name__)

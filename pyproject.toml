@@ -1,0 +1,33 @@
+[build-system]
+requires = ["hatchling>=1.25"]
+build-backend = "hatchling.build"
+
+[project]
+name = "cell-ontology-mapper"
+version = "0.1.0"
+description = "Map free-text cell type labels to Cell Ontology terms via OLS4, with optional LLM help."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Yunning Yuan" }]
+requires-python = ">=3.10"
+dependencies = [
+    "langchain>=1.0,<2",
+    "langchain-openai>=1.0,<2",
+    "pandas>=2.0",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+anndata = ["anndata>=0.10"]
+dev = ["pytest>=8", "anndata>=0.10"]
+
+[project.scripts]
+clmap = "cl_mapper.cli:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/cl_mapper"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["network: calls the live OLS4 API (run with CLMAP_LIVE=1)"]

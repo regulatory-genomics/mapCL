@@ -1,0 +1,11 @@
+cell_type	tissue	species
+B cells	blood	human
+16_Endothelial cells	liver	human
+Liver endothelial	liver	human
+Kupffer cells	liver	human
+CD4+ T cell	blood	human
+cDC1	spleen	mouse
+Microglia	brain	mouse
+Mono/Mac	lung	human
+CAF	breast tumor	human
+unknown		human

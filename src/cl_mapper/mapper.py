@@ -4,12 +4,14 @@ For every distinct (label, tissue, species, cell state) query:
 
 1. Clean the label; placeholders such as "unknown" or "NA" stop here.
 2. Direct match against CL labels and exact synonyms (bundled table).
-3. Optional LLM expansion: the LLM proposes the standard name, which is tried
-   as a direct match and as an extra search query.
-4. OLS4 search in CL.
-5. Without an LLM: accept the top CL hit.
+3. OLS4 search in CL, then choose a term.
+   Without an LLM: accept a CL term that contains every word of a query.
    With an LLM: the LLM scores the candidates; the best one is accepted at
-   ``min_score`` or above, otherwise NCIT/BTO are searched and scored the same way.
+   ``min_score`` or above.
+   Optional LLM expansion (the LLM proposes the standard name) runs before the
+   search for abbreviations and codes ("EC", "OGC_2"), and for full names only
+   after every candidate was rejected; the search is then repeated.
+4. With an LLM, if no CL term is accepted, NCIT/BTO are searched and scored.
 """
 
 from __future__ import annotations
@@ -30,6 +32,7 @@ from .text import (
     clean_label,
     content_tokens,
     is_abbreviation,
+    is_short_code,
     is_unknown,
     match_key,
     normalize_species,
@@ -169,30 +172,56 @@ class CellOntologyMapper:
                 res.note = "abbreviation matched a CL synonym; check it"
             return _accept(res, _from_term(term), "direct")
 
+        # Codes ("EC", "OGC_2", "ITL4") are expanded before searching. Full names
+        # are searched and scored first and expanded only if every candidate fails.
+        code = is_short_code(cleaned, self.ontology.vocabulary)
+        base = _shortened(q.label, cleaned)
+        if q.tissue and self._assess is not None:
+            base.append(f"{q.tissue} {cleaned}")
+        tried: set[str] = set()
         expanded: list[str] = []
         hint = AMBIGUOUS_HINT
-        if self._expand is not None:
-            exp = self._expand.invoke({"label": q.label, "context": self._context(q)})
-            res.expanded_label = exp.cell_type
-            expanded = _expanded_forms([exp.cell_type, *exp.synonyms[:2]])
-            # Fix 2: an abbreviation whose expansion is itself a CL term is not
-            # ambiguous any more, so the assessor must not cap its score.
-            if resolved := self._direct(clean_label(exp.cell_type)) or self._direct(
-                    without_qualifiers(clean_label(exp.cell_type))):
-                hint = RESOLVED_HINT.format(expanded=exp.cell_type, term=resolved.label)
-        queries = _dedupe([*expanded, *_shortened(q.label, cleaned)])
-
-        if self._assess is None:
-            return self._lexical(res, q, queries, set(expanded))
-
-        if q.tissue:
-            queries.append(f"{q.tissue} {cleaned}")
-        if self._assess_step(q, res, self._candidates(q, queries, ("cl",)), "llm", hint):
+        if code and self._expand is not None:
+            expanded, hint = self._expansion(q, res)
+        queries = _dedupe([*expanded, *base])
+        if self._cl_round(q, res, queries, expanded, hint, tried):
             return res
-        if self.fallback_ontologies:
+        if not code and self._expand is not None:
+            expanded, hint = self._expansion(q, res)
+            queries = _dedupe([*expanded, *base])
+            if self._cl_round(q, res, queries, expanded, hint, tried):
+                return res
+
+        if self._assess is not None and self.fallback_ontologies:
             fallback = self._candidates(q, queries[:3], self.fallback_ontologies)
             self._assess_step(q, res, fallback, "llm_fallback", hint)
         return res
+
+    def _expansion(self, q: Query, res: MappingResult) -> tuple[list[str], str]:
+        """LLM expansion: search names and the assessment hint."""
+        exp = self._expand.invoke({"label": q.label, "context": self._context(q)})
+        res.expanded_label = exp.cell_type
+        names = _expanded_forms([exp.cell_type, *exp.synonyms[:2]])
+        # An abbreviation whose expansion is itself a CL term is not ambiguous
+        # any more, so the assessor must not cap its score.
+        name = clean_label(exp.cell_type)
+        if resolved := self._direct(name) or self._direct(without_qualifiers(name)):
+            return names, RESOLVED_HINT.format(expanded=exp.cell_type, term=resolved.label)
+        return names, AMBIGUOUS_HINT
+
+    def _cl_round(self, q: Query, res: MappingResult, queries: list[str], expanded: list[str],
+                  hint: str, tried: set[str]) -> bool:
+        """Search CL with ``queries`` and choose a term; True if one is accepted.
+
+        Candidates already rejected in an earlier round are not scored again.
+        """
+        if self._assess is None:
+            return bool(self._lexical(res, q, queries, set(expanded)).mapped_id)
+        cands = self._candidates(q, queries, ("cl",))
+        if not cands or {c.id for c in cands} <= tried:
+            return False
+        tried.update(c.id for c in cands)
+        return self._assess_step(q, res, cands, "llm", hint)
 
     def _map_safe(self, q: Query) -> MappingResult:
         try:

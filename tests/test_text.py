@@ -1,7 +1,9 @@
 import pytest
 
+from cl_mapper.ontology import load_bundled
 from cl_mapper.text import (
     clean_label,
+    is_short_code,
     is_unknown,
     match_key,
     taxon,
@@ -73,3 +75,12 @@ def test_shortened_queries():
 def test_match_key_keeps_latin_endings():
     assert match_key("plexus") == "plexus"
     assert match_key("glass") == "glass"
+
+
+@pytest.mark.parametrize("label, code", [
+    ("EC", True), ("OGC", True), ("ITL4", True), ("Myofib PRO", True), ("EN-IT-Immature", True),
+    ("Hypertrophic Chon", True), ("Fetal Hepatic Endothelial", False), ("B Memory", False),
+    ("CD4 Naive", False), ("Pericyte General", False), ("Smooth Muscle Esophageal Muscularis", False),
+])
+def test_is_short_code(label, code):
+    assert is_short_code(label, load_bundled().vocabulary) is code

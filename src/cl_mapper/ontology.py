@@ -5,11 +5,11 @@ from __future__ import annotations
 import csv
 import json
 from dataclasses import dataclass, field
-from functools import lru_cache
+from functools import cached_property, lru_cache
 from importlib import resources
 from pathlib import Path
 
-from .text import match_key
+from .text import GENERIC_TOKENS, QUALIFIERS, match_key, tokens
 
 TERMS_FILE = "cl_terms.tsv"
 META_FILE = "cl_terms.meta.json"
@@ -65,6 +65,15 @@ class CellOntology:
     def direct_match(self, label: str) -> Term | None:
         term_id = self._index.get(match_key(label))
         return self.terms[term_id] if term_id else None
+
+    @cached_property
+    def vocabulary(self) -> frozenset[str]:
+        """Word tokens of CL labels and exact synonyms, used to tell names from codes."""
+        words = set(GENERIC_TOKENS | QUALIFIERS)
+        for term in self.terms.values():
+            for name in (term.label, *term.exact_synonyms):
+                words.update(tokens(name))
+        return frozenset(words)
 
     def get(self, term_id: str) -> Term | None:
         return self.terms.get(term_id.strip().upper().replace("_", ":"))

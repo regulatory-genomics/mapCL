@@ -11,22 +11,18 @@ For each distinct label + context (tissue, species, cell state):
 
 1. **Clean** the label: drop cluster numbers ("16_", "_3", "35-"), "like",
    punctuation and plurals, and split glued words ("HypertrophicChon").
-   Placeholders such as "unknown" or "NA" stop here. Labels that clean to the
-   same text ("Fetal Astrocyte 1", "Fetal Astrocyte 2") are mapped once.
+   Placeholders such as "unknown" or "NA" stop here. 
 2. **Direct match** against CL labels and exact synonyms in the bundled CL
-   table, also with "cell" added ("Plasma" -> plasma cell). Case, word order
-   and plurals are ignored. No network call is made. With an LLM, short
-   abbreviations ("IC", "PC") only become candidates, because the CL synonym
-   is often a different cell type.
-3. **Expand** (optional, LLM): turn abbreviations into a standard name,
-   e.g. "KC" in liver becomes "Kupffer cell".
-4. **Search** OLS4 in CL. OLS needs every query word to match, so shorter
-   forms are searched too: without "fetal"/"cycling", without the first word,
-   or with a bracketed qualifier moved in front ("Fibroblast (Splenic)" ->
-   "Splenic Fibroblast"). Terms restricted to another species are dropped.
+   table. Case, word order and plurals are ignored. No network call is made. 
+3. **Expand** (optional, LLM): turn a label into a standard name, e.g. "KC"
+   in liver becomes "Kupffer cell". Abbreviations and codes ("EC", "OGC",
+   "ITL4") are expanded before the search. Full names ("Fetal Hepatic
+   Endothelial") are searched and scored first, and expanded and searched
+   again only if the LLM rejects every candidate.
+4. **Search** OLS4 API search in CL. 
 5. **Choose**
    - without an LLM: accept a term only if its label or a synonym contains
-     every word of a query. The term with the fewest extra words wins.
+     every word of a query. 
    - with an LLM: score the candidates from 1 to 10 and accept the best one at
      `min_score` (default 6) or above. If no CL candidate passes, NCIT and BTO
      are searched and scored the same way. Otherwise the label is reported as
@@ -97,8 +93,8 @@ The output is the input table plus `mapped_id`, `mapped_label`,
 
 ## Agent (optional)
 
-A LangChain agent for hard labels. It uses the pipeline, OLS search and CL
-lookup as tools. Use `clmap map` for batch work.
+A LangChain agent for hard labels. It wraps the fixed pipeline, using OLS search 
+and CL lookup as tools. Use `clmap map` for batch work.
 
 ```bash
 clmap agent "What CL term fits 'Mono/Mac_3' from lung? It expresses CD14 and MARCO."
@@ -108,14 +104,6 @@ clmap agent "What CL term fits 'Mono/Mac_3' from lung? It expresses CD14 and MAR
 
 `src/cl_mapper/data/cl_terms.tsv` holds all non-obsolete CL terms (release
 2026-06-08). `clmap build-db` updates it from OLS4.
-
-## Development
-
-```bash
-pip install -e ".[dev]"
-pytest                  # offline tests
-CLMAP_LIVE=1 pytest     # also checks the live OLS4 API
-```
 
 ## License and citation
 

@@ -160,6 +160,35 @@ def test_fix2_unresolved_abbreviation_keeps_cap(ontology):
     assert "score at most 5" in llm.prompts[-1]
 
 
+def test_full_name_accepted_without_expansion(ontology):
+    ols = FakeOLS({("lung macrophage", "cl"): [cl("CL:0000091", "Kupffer cell")]})
+    llm = FakeLLM(lambda schema, _: Assessment(best_index=1, score=9, reason="r"))
+    r = make(ontology, ols, llm, expand=True).map_one("Lung Macrophage")
+    assert (r.mapped_id, r.method, r.expanded_label) == ("CL:0000235", "llm", None)
+    assert all("Interpret" not in p for p in llm.prompts) and len(llm.prompts) == 1
+
+
+def test_full_name_expanded_only_after_rejection(ontology):
+    ols = FakeOLS({("lung macrophage", "cl"): [cl("CL:0000235", "macrophage")]})
+    def respond(schema, prompt):
+        if schema is Expansion:
+            return Expansion(cell_type="Kupffer cell", synonyms=[])
+        return Assessment(best_index=1, score=4 if "1. macrophage" in prompt else 9, reason="r")
+    llm = FakeLLM(respond)
+    r = make(ontology, ols, llm, expand=True, fallback_ontologies=()).map_one("Lung Macrophage")
+    assert (r.mapped_id, r.expanded_label) == ("CL:0000091", "Kupffer cell")
+    assert len(llm.prompts) == 3  # assess, expand, assess
+
+
+def test_code_is_expanded_before_search(ontology):
+    llm = FakeLLM(lambda schema, _: Expansion(cell_type="endothelial cell", synonyms=[])
+                  if schema is Expansion else Assessment(best_index=1, score=9, reason="r"))
+    ols = FakeOLS()
+    r = make(ontology, ols, llm, expand=True).map_one("EC_2")
+    assert (r.mapped_id, r.expanded_label) == ("CL:0000115", "endothelial cell")
+    assert ols.calls[0][0] == "endothelial cell"
+
+
 def test_expansion_without_assessment_uses_expanded_direct(ontology):
     llm = FakeLLM(lambda schema, _: Expansion(cell_type="natural killer cell", synonyms=[]))
     r = make(ontology, FakeOLS(), llm, expand=True, assess=False).map_one("NKs")

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import re
 import unicodedata
+from collections.abc import Set as AbstractSet
 
 UNKNOWN_LABELS = frozenset({
     "", "unk", "unknown", "unknown cell", "unknown cell type", "na", "n a", "nan", "none",
@@ -47,6 +48,27 @@ def clean_label(label: object) -> str:
 def is_abbreviation(label: str) -> bool:
     """Single short token such as "IC", "EC", "COP": a direct hit may be a different cell type."""
     return " " not in label and len(label) <= 4
+
+
+_CODE_PART = re.compile(r"[A-Z]{2,}[A-Za-z0-9]*|[A-Za-z]+\d[A-Za-z0-9]*")
+_MARKER = re.compile(r"CD\d+[A-Za-z]?|[A-Za-z0-9]+[+-]")
+
+
+def is_short_code(label: str, vocabulary: AbstractSet[str]) -> bool:
+    """Abbreviation or cluster code ("EC", "OGC", "ITL4", "Myofib PRO", "EN-IT-Immature").
+
+    A full name is made only of words that occur in CL names ("Fetal Hepatic
+    Endothelial"); capitalised codes and words with digits make it a code.
+    Numbers and markers ("CD4", "NPY+") do not count.
+    """
+    if is_abbreviation(label):
+        return True
+    for part in re.split(r"[\s/.]+|-(?=\w)", label):
+        if not part or part.isdigit() or _MARKER.fullmatch(part):
+            continue
+        if _CODE_PART.fullmatch(part) or any(t not in vocabulary for t in tokens(part)):
+            return True
+    return False
 
 
 def without_leading_words(label: str) -> list[str]:

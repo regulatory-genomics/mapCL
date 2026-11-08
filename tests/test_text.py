@@ -1,9 +1,22 @@
 import pytest
 
-from cl_mapper.text import clean_label, is_unknown, match_key
+from cl_mapper.text import (
+    clean_label,
+    is_unknown,
+    match_key,
+    taxon,
+    without_leading_words,
+    without_qualifiers,
+)
 
 
 @pytest.mark.parametrize("raw, expected", [
+    ("35-B cell", "B cell"),
+    ("5-HT neuron", "5-HT neuron"),
+    ("ITL6_2_1", "ITL6"),
+    ("HypertrophicChon", "Hypertrophic Chon"),
+    ("Bcell", "B cell"),
+    ("Alveolar Type 1 (AT1) Cell", "Alveolar Type 1 Cell"),
     ("16_Endothelial cells", "Endothelial cell"),
     ("001. B cells", "B cell"),
     ("Endothelial 3", "Endothelial"),
@@ -37,6 +50,24 @@ def test_match_key_ignores_case_order_punctuation_plural():
 
 def test_match_key_keeps_marker_sign():
     assert match_key("CD4+ T cell") != match_key("CD4 T cell")
+
+
+def test_match_key_marker_sign_equals_spelled_out():
+    assert match_key("CD16- NK cell") == match_key("CD16-negative NK cell")
+
+
+def test_taxon():
+    assert taxon("STR D1 MSN neuron (Primate)") == "human"
+    assert taxon("astrocyte (Mmus)") == "mouse"
+    assert taxon("neuron (sensu Nematoda)") == "other"
+    assert taxon("B cell (sensu Vertebrata)") is None
+    assert taxon("hepatocyte") is None
+
+
+def test_shortened_queries():
+    assert without_qualifiers("Fetal Astrocyte") == "Astrocyte"
+    assert without_leading_words("Fetal Atrial Cardiomyocyte") == ["Atrial Cardiomyocyte",
+                                                                   "Cardiomyocyte"]
 
 
 def test_match_key_keeps_latin_endings():

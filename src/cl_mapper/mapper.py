@@ -15,6 +15,7 @@ For every distinct (label, tissue, species, cell state) query:
 from __future__ import annotations
 
 import logging
+import re
 from collections.abc import Iterable, Sequence
 from dataclasses import asdict, dataclass, replace
 
@@ -24,14 +25,29 @@ from langchain_core.runnables import RunnableLambda
 from . import llm as llm_mod
 from .ols import Candidate, OLSClient
 from .ontology import CellOntology, Term, load_bundled
-from .text import clean_label, is_unknown
+from .text import (
+    QUALIFIERS,
+    clean_label,
+    content_tokens,
+    is_abbreviation,
+    is_unknown,
+    match_key,
+    normalize_species,
+    taxon,
+    tokens,
+    without_leading_words,
+    without_qualifiers,
+)
+
+_TAXON_TOKENS = frozenset({"mmus", "primate", "human", "mouse", "homo", "sapien", "sapiens", "sensu"})
 
 logger = logging.getLogger(__name__)
 
 METHODS = {
-    "direct": "exact match of the cleaned label to a CL label or exact synonym",
-    "expanded_direct": "exact match of the LLM-expanded name (no LLM assessment)",
-    "ols_top_hit": "first CL hit from OLS search (no LLM assessment)",
+    "direct": "cleaned label (or label + 'cell') equals a CL label or exact synonym",
+    "expanded_direct": "LLM-expanded name equals a CL label or exact synonym (no assessment)",
+    "lexical": "CL term whose label or a synonym has all words of the label or a shortened "
+               "form of it, e.g. without 'fetal' (no LLM; often broader; see note)",
     "llm": "CL candidate accepted by the LLM assessment",
     "llm_fallback": "NCIT/BTO candidate accepted by the LLM assessment",
     "unknown": "placeholder label such as 'unknown' or 'NA'",
@@ -116,13 +132,21 @@ class CellOntologyMapper:
         self._assess = llm_mod.assessment_chain(llm) if llm is not None and assess else None
 
     def map(self, queries: Iterable[Query | str]) -> list[MappingResult]:
-        """Map queries in parallel. Duplicates are mapped once; output order follows input."""
+        """Map queries in parallel; output order follows input.
+
+        Labels that clean to the same text in the same context ("Fetal Astrocyte 1",
+        "Fetal Astrocyte 2") are mapped once.
+        """
         items = [q if isinstance(q, Query) else Query(label=str(q)) for q in queries]
-        unique = list(dict.fromkeys(items))
+        first: dict[tuple, Query] = {}
+        for q in items:
+            first.setdefault(_key(q), q)
+        unique = list(first.values())
         mapped = RunnableLambda(self._map_safe).batch(
             unique, config={"max_concurrency": self.max_concurrency})
-        by_query = dict(zip(unique, mapped, strict=True))
-        return [replace(by_query[q]) for q in items]
+        by_key = {_key(q): r for q, r in zip(unique, mapped, strict=True)}
+        return [replace(by_key[_key(q)], input_label=q.label, cleaned_label=clean_label(q.label))
+                for q in items]
 
     def map_one(self, query: Query | str) -> MappingResult:
         """Map a single query. OLS and LLM errors are raised, not caught."""
@@ -133,24 +157,29 @@ class CellOntologyMapper:
         if is_unknown(cleaned):
             res.method = "unknown"
             return res
-        if term := self.ontology.direct_match(cleaned):
+        # A short abbreviation can be the synonym of an unrelated term ("IC" is
+        # "inferior cardiac neuron" in CL), so with an LLM it is only a candidate.
+        if (term := self._direct(cleaned)) and not (self._assess and is_abbreviation(cleaned)):
+            if is_abbreviation(cleaned):
+                res.note = "abbreviation matched a CL synonym; check it"
             return _accept(res, _from_term(term), "direct")
 
-        names = [cleaned]
+        expanded: list[str] = []
         if self._expand is not None:
             exp = self._expand.invoke({"label": q.label, "context": self._context(q)})
             res.expanded_label = exp.cell_type
-            names = _dedupe([exp.cell_type, *exp.synonyms[:2], cleaned])
+            expanded = _dedupe([exp.cell_type, *exp.synonyms[:2]])
+        queries = _dedupe([*expanded, *_shortened(q.label, cleaned)])
 
         if self._assess is None:
-            return self._top_hit(res, names)
+            return self._lexical(res, q, queries, set(expanded))
 
         if q.tissue:
-            names.append(f"{q.tissue} {cleaned}")
-        if self._assess_step(q, res, self._candidates(names, ("cl",)), "llm"):
+            queries.append(f"{q.tissue} {cleaned}")
+        if self._assess_step(q, res, self._candidates(q, queries, ("cl",)), "llm"):
             return res
         if self.fallback_ontologies:
-            fallback = self._candidates(names, self.fallback_ontologies)
+            fallback = self._candidates(q, queries[:3], self.fallback_ontologies)
             self._assess_step(q, res, fallback, "llm_fallback")
         return res
 
@@ -172,27 +201,66 @@ class CellOntologyMapper:
         term = self.ontology.get(c.id) if c.ontology == "CL" else None
         return _from_term(term) if term else c
 
-    def _top_hit(self, res: MappingResult, names: Sequence[str]) -> MappingResult:
-        """No assessment: first direct match of an expanded name, else first OLS CL hit."""
-        for name in names:
-            if term := self.ontology.direct_match(name):
-                return _accept(res, _from_term(term), "expanded_direct")
-            if hits := self.ols.search(name, ("cl",), rows=1):
-                return _accept(res, self._enrich(hits[0]), "ols_top_hit")
+    def _direct(self, name: str) -> Term | None:
+        """Direct match of ``name``, else of ``name + " cell"`` ("Plasma" -> plasma cell)."""
+        term = self.ontology.direct_match(name)
+        if term is None and "cell" not in tokens(name):
+            term = self.ontology.direct_match(f"{name} cell")
+        return term
+
+    def _search(self, query: str, ontologies: Sequence[str], species: str | None) -> list[Candidate]:
+        """OLS search; drops terms restricted to another species or to non-vertebrates."""
+        if not any(len(t) > 1 for t in content_tokens(query)):
+            return []  # single letters ("B") are slow and useless OLS queries
+        hits = self.ols.search(query, ontologies, rows=self.top_k)
+        keep = []
+        for h in map(self._enrich, hits):
+            tx = taxon(h.label) if h.ontology == "CL" else None
+            if tx == "other" or (species and tx and tx != species):
+                continue
+            keep.append(h)
+        return keep
+
+    def _lexical(self, res: MappingResult, q: Query, queries: Sequence[str],
+                 expanded: set[str]) -> MappingResult:
+        """No LLM: accept a term only if it contains every word of a query.
+
+        Queries are tried in order (expanded names, the label, shortened forms);
+        among passing hits the one with the fewest extra words wins, so
+        "B Memory" gives "memory B cell", not a narrow memory B subtype.
+        """
+        species = normalize_species(q.species)
+        for query in queries:
+            if term := self._direct(query):
+                method = "expanded_direct" if query in expanded else "lexical"
+                res.note = f"matched '{query}'"
+                return _accept(res, _from_term(term), method)
+            want = content_tokens(query)
+            best, best_extra = None, None
+            for h in self._search(query, ("cl",), species):
+                extra = _extra_words(want, (h.label, *h.synonyms))
+                if extra is not None and (best_extra is None or extra < best_extra):
+                    best, best_extra = h, extra
+            if best is not None:
+                res.note = f"all words of '{query}' found in the term"
+                if is_abbreviation(query):
+                    res.note = f"abbreviation '{query}' is ambiguous without an LLM; check it"
+                return _accept(res, best, "lexical")
         return res
 
-    def _candidates(self, names: Sequence[str], ontologies: Sequence[str]) -> list[Candidate]:
+    def _candidates(self, q: Query, names: Sequence[str], ontologies: Sequence[str]) -> list[Candidate]:
         """Direct CL matches of each name first, then OLS hits interleaved across queries."""
+        species = normalize_species(q.species)
         merged: dict[str, Candidate] = {}
         if "cl" in ontologies:
             for name in names:
-                if term := self.ontology.direct_match(name):
+                if term := self._direct(name):
                     merged.setdefault(term.id, _from_term(term))
-        hit_lists = [self.ols.search(n, ontologies, rows=self.top_k) for n in names]
+        hit_lists = [self._search(n, ontologies, species) for n in names]
         for rank in range(self.top_k):
             for hits in hit_lists:
                 if rank < len(hits) and hits[rank].id not in merged:
-                    merged[hits[rank].id] = self._enrich(hits[rank])
+                    merged[hits[rank].id] = hits[rank]
         return list(merged.values())[: self.max_candidates]
 
     def _assess_step(self, q: Query, res: MappingResult, cands: list[Candidate], method: str) -> bool:
@@ -218,6 +286,39 @@ def _from_term(term: Term) -> Candidate:
 
 def _dedupe(items: Iterable[str]) -> list[str]:
     return list(dict.fromkeys(s.strip() for s in items if s and s.strip()))
+
+
+def _key(q: Query) -> tuple:
+    return match_key(clean_label(q.label)), q.tissue, q.species, q.cell_state
+
+
+def _shortened(raw: str, cleaned: str) -> list[str]:
+    """Search queries: the label, the part before a bracket ("Fibroblast (Peripheral
+    Nerve)" -> "Fibroblast"), without qualifiers ("fetal"), then without the first
+    1-2 words. Shortened forms that are one short fragment ("Endo", "PRO") are dropped.
+    """
+    head = clean_label(re.sub(r"\(.*$", "", raw)) or cleaned
+    inner = re.search(r"\(([^)]*)\)", raw)
+    moved = []  # "Fibroblast (Splenic)" -> "Splenic Fibroblast"
+    if inner:
+        for part in re.split(r"[,;/]", inner.group(1)):
+            if (part := clean_label(part)) and part.lower() not in QUALIFIERS:
+                moved.append(without_qualifiers(f"{part} {head}"))
+    plain = without_qualifiers(head)
+    shorter = [v for v in without_leading_words(plain)[:2] if " " in v or len(v) > 4]
+    return [v for v in _dedupe([cleaned, *moved, head, plain, *shorter])
+            if content_tokens(v) - QUALIFIERS]
+
+
+def _extra_words(want: set[str], names: Iterable[str]) -> int | None:
+    """Fewest words a name adds beyond ``want``; None if no name contains all of ``want``."""
+    best = None
+    for name in names:
+        have = content_tokens(name) - _TAXON_TOKENS
+        if want and want <= have:
+            extra = len(have - want) + (2 if taxon(name) else 0)
+            best = extra if best is None else min(best, extra)
+    return best
 
 
 def _accept(res: MappingResult, c: Candidate, method: str) -> MappingResult:

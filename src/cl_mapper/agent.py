@@ -28,7 +28,7 @@ reason. If nothing fits, say so and suggest the closest broader CL term."""
 
 
 def build_agent(
-    llm: BaseChatModel | str,
+    llm: BaseChatModel | str = llm_mod.DEFAULT_MODEL,
     *,
     mapper: CellOntologyMapper | None = None,
     ontology: CellOntology | None = None,

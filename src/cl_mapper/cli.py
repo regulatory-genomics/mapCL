@@ -9,18 +9,31 @@ import sys
 from collections import Counter
 
 
-def _llm_args(p: argparse.ArgumentParser) -> None:
-    p.add_argument("--model", default=os.getenv("CLMAP_MODEL"),
-                   help='LangChain model id, e.g. "openai:gpt-4.1-mini" (env CLMAP_MODEL)')
+def _llm_args(p: argparse.ArgumentParser, optional: bool) -> None:
+    from .llm import DEFAULT_MODEL, DEFAULT_REASONING_EFFORT
+
+    p.add_argument("--model", default=os.getenv("CLMAP_MODEL", DEFAULT_MODEL),
+                   help=f'LangChain "provider:model" (env CLMAP_MODEL; default {DEFAULT_MODEL})')
+    p.add_argument("--reasoning-effort",
+                   default=os.getenv("CLMAP_REASONING_EFFORT", DEFAULT_REASONING_EFFORT or "none"),
+                   help="reasoning effort for OpenAI reasoning models, e.g. high (default %(default)s)")
     p.add_argument("--base-url", default=os.getenv("CLMAP_BASE_URL"),
-                   help="OpenAI-compatible endpoint (env CLMAP_BASE_URL)")
+                   help="API endpoint (env CLMAP_BASE_URL; else the provider's own variable)")
+    if optional:
+        p.add_argument("--no-llm", action="store_true",
+                       help="no LLM: direct match + word-overlap search only")
 
 
 def _make_llm(args):
-    if not args.model:
+    if getattr(args, "no_llm", False):
         return None
     from .llm import make_chat_model
-    return make_chat_model(args.model, base_url=args.base_url)
+    effort = None if args.reasoning_effort in ("", "none") else args.reasoning_effort
+    try:
+        return make_chat_model(args.model, base_url=args.base_url, reasoning_effort=effort)
+    except Exception as exc:  # usually a missing API key
+        raise SystemExit(f"Could not create LLM {args.model!r}: {exc}\n"
+                         "Set the provider API key (e.g. DEEPSEEK_API_KEY) or use --no-llm.") from exc
 
 
 def _cmd_map(args) -> int:
@@ -29,7 +42,7 @@ def _cmd_map(args) -> int:
 
     llm = _make_llm(args)
     if llm is None and (args.expand or args.no_assess):
-        print("--expand/--no-assess need --model", file=sys.stderr)
+        print("--expand/--no-assess cannot be combined with --no-llm", file=sys.stderr)
         return 2
     mapper = CellOntologyMapper(
         llm, expand=args.expand, assess=not args.no_assess, study_context=args.context,
@@ -49,11 +62,7 @@ def _cmd_map(args) -> int:
 def _cmd_agent(args) -> int:
     from .agent import build_agent
 
-    llm = _make_llm(args)
-    if llm is None:
-        print("clmap agent needs --model", file=sys.stderr)
-        return 2
-    agent = build_agent(llm)
+    agent = build_agent(_make_llm(args))
     result = agent.invoke({"messages": [{"role": "user", "content": args.question}]})
     print(result["messages"][-1].content)
     return 0
@@ -81,15 +90,16 @@ def build_parser() -> argparse.ArgumentParser:
     m.add_argument("--cell-state-col")
     m.add_argument("--context", help="study context for the LLM, e.g. 'human PBMC, COVID-19'")
     m.add_argument("--expand", action="store_true", help="LLM expands labels before searching")
-    m.add_argument("--no-assess", action="store_true", help="skip LLM assessment; take OLS top hit")
+    m.add_argument("--no-assess", action="store_true",
+                   help="skip LLM assessment (use with --expand)")
     m.add_argument("--min-score", type=int, default=6, help="lowest accepted LLM score (1-10)")
     m.add_argument("--workers", type=int, default=4, help="labels processed in parallel")
-    _llm_args(m)
+    _llm_args(m, optional=True)
     m.set_defaults(func=_cmd_map)
 
     a = sub.add_parser("agent", help="ask the mapping agent a question")
     a.add_argument("question")
-    _llm_args(a)
+    _llm_args(a, optional=False)
     a.set_defaults(func=_cmd_agent)
 
     b = sub.add_parser("build-db", help="rebuild the bundled CL table from OLS4")

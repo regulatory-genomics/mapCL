@@ -31,4 +31,4 @@ def test_fallback_ontologies():
 def test_mapper_without_llm():
     res = CellOntologyMapper().map([Query("B cells"), Query("Liver endothelial")])
     assert res[0].method == "direct" and res[0].mapped_id == "CL:0000236"
-    assert res[1].method == "ols_top_hit" and res[1].mapped_id.startswith("CL:")
+    assert res[1].method == "lexical" and res[1].mapped_id.startswith("CL:")

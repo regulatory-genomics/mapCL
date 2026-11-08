@@ -19,16 +19,61 @@ def test_unknown_and_direct_need_no_network(ontology):
     assert ols.calls == []
 
 
-def test_no_llm_takes_top_ols_hit(ontology):
-    ols = FakeOLS({("liver endothelial", "cl"): [cl("CL:1000398", "x"), cl("CL:0000115", "y")]})
+def test_no_llm_needs_all_query_words_in_term(ontology):
+    # macrophage is OLS's top hit but lacks "liver"/"endothelial"; the sinusoid term has both
+    ols = FakeOLS({("liver endothelial", "cl"): [cl("CL:0000235", "x"), cl("CL:1000398", "y")]})
     r = make(ontology, ols).map_one("Liver endothelial")
-    assert (r.mapped_id, r.method) == ("CL:1000398", "ols_top_hit")
+    assert (r.mapped_id, r.method) == ("CL:1000398", "lexical")
     assert r.mapped_label == "endothelial cell of hepatic sinusoid"  # bundled label, not OLS text
+
+
+def test_no_llm_skips_terms_of_other_species(ontology):
+    ols = FakeOLS({("alveolar fibroblast", "cl"): [cl("CL:9000010", "x")]})
+    human = make(ontology, ols).map_one(Query("Alveolar fibroblast", species="human"))
+    assert human.mapped_id == "CL:0000057"  # mouse term skipped -> broader "fibroblast"
+    mouse = make(ontology, ols).map_one(Query("Alveolar fibroblast", species="mouse"))
+    assert mouse.mapped_id == "CL:9000010"
+
+
+def test_no_llm_prefers_general_over_species_specific_term(ontology):
+    hits = [cl("CL:9000010", "x"), cl("CL:9000011", "y")]
+    ols = FakeOLS({("alveolar fibroblast", "cl"): hits})
+    assert make(ontology, ols).map_one("Alveolar fibroblast").mapped_id == "CL:9000011"
+
+
+def test_no_llm_falls_back_to_shorter_query(ontology):
+    r = make(ontology).map_one("Fetal Kupffer cells 3")
+    assert (r.mapped_id, r.method) == ("CL:0000091", "lexical")
+    assert "Kupffer" in r.note
+
+
+def test_bracket_qualifier_moved_into_query(ontology):
+    r = make(ontology).map_one("Fibroblast (Lung)")
+    assert r.mapped_id == "CL:0002553"
+
+
+def test_label_plus_cell_is_direct(ontology):
+    assert make(ontology).map_one("Macrophage").method == "direct"
+    assert make(ontology).map_one("Kupffer").mapped_id == "CL:0000091"
 
 
 def test_no_hits_is_unmapped(ontology):
     r = make(ontology).map_one("weird cluster")
     assert (r.mapped_id, r.method) == (None, "unmapped")
+
+
+def test_variants_of_one_label_are_mapped_once(ontology):
+    ols = FakeOLS()
+    res = make(ontology, ols).map(["Weird 1", "Weird 2", "weird_3"])
+    assert [r.input_label for r in res] == ["Weird 1", "Weird 2", "weird_3"]
+    assert len({c[0] for c in ols.calls}) == len(ols.calls)  # no repeated searches
+
+
+def test_abbreviation_direct_hit_goes_to_llm(ontology):
+    llm = FakeLLM(lambda schema, _: Assessment(best_index=1, score=3, reason="no"))
+    r = make(ontology, FakeOLS(), llm, fallback_ontologies=()).map_one("Treg")
+    assert (r.mapped_id, r.score) == (None, 3)  # LLM saw the candidate and rejected it
+    assert make(ontology).map_one("Treg").method == "direct"  # no LLM: still direct, with a note
 
 
 def test_llm_assessment_accepts_best_candidate(ontology):

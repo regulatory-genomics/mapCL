@@ -6,27 +6,79 @@ import re
 import unicodedata
 
 UNKNOWN_LABELS = frozenset({
-    "", "unk", "unknown", "na", "n a", "nan", "none", "null", "undefined",
-    "unannotated", "not annotated", "unassigned", "not assigned",
+    "", "unk", "unknown", "unknown cell", "unknown cell type", "na", "n a", "nan", "none",
+    "null", "undefined", "unannotated", "not annotated", "unassigned", "not assigned",
+    "unclassified", "unclassified cell", "unidentified", "unidentified cell",
 })
+GENERIC_TOKENS = frozenset({"cell", "type", "of", "and", "the", "in", "positive", "negative"})
+# Qualifiers that CL rarely encodes; dropping them gives a correct but broader term.
+QUALIFIERS = frozenset({
+    "fetal", "foetal", "embryonic", "adult", "immature", "cycling", "proliferating",
+    "dividing", "activated", "resting", "general", "normal", "healthy",
+})
+_SPECIES = {"human": "human", "homo sapiens": "human", "hs": "human", "hsa": "human",
+            "mouse": "mouse", "mus musculus": "mouse", "mm": "mouse", "mmu": "mouse"}
 
 
 def clean_label(label: object) -> str:
     """Remove technical noise from a user label before matching or searching.
 
-    Drops cluster indices ("16_T cells", "Endothelial 3"), the word "like",
-    quotes and other punctuation, and turns "cells" into "cell".
-    Keeps "+", "-" and "/" because they carry marker information (CD4+, CD16-).
+    - cluster indices: "16_T cells", "35-B cell", "Endothelial 3", "ITL6_2_1"
+    - bracketed abbreviations: "Alveolar Type 1 (AT1) Cell" -> "Alveolar Type 1 Cell"
+    - glued words: "HypertrophicChon" -> "Hypertrophic Chon", "Bcells" -> "B cell"
+    - the word "like", quotes and other punctuation; "cells" -> "cell"
+    Keeps "+", "-" and "/" inside words because they carry marker information.
+    The LLM always sees the original label, so nothing here is lost for it.
     """
     s = unicodedata.normalize("NFKC", str(label)).strip()
-    s = re.sub(r"^\d+\s*[_.:]\s*", "", s)
-    s = re.sub(r"[_.]\d+$", "", s)
+    s = re.sub(r"\(\s*[A-Z0-9]{1,5}\s*\)", " ", s)  # "(AT1)" repeats the words before it
+    s = re.sub(r"^\d+\s*(?:[_.:]|-(?![A-Z]{2,}\b))\s*", "", s)  # keeps "5-HT neuron"
+    s = re.sub(r"(?:[_.]\d+)+$", "", s.strip())
     s = s.replace("_", " ")
+    s = re.sub(r"(?<=[a-z]{3})(?=[A-Z])", " ", s)
+    s = re.sub(r"\b([A-Z][A-Za-z0-9+]{0,4})(cells?)\b", r"\1 \2", s)
     s = re.sub(r"[-\s]?\blike\b", " ", s, flags=re.IGNORECASE)
     s = re.sub(r"\bcells\b", "cell", s, flags=re.IGNORECASE)
     s = re.sub(r"[^\w\s+\-/]", " ", s)
-    s = re.sub(r"\s+\d+$", "", s.strip())
+    s = re.sub(r"(\s+\d+)+$", "", s.strip())
     return re.sub(r"\s+", " ", s).strip(" -/")
+
+
+def is_abbreviation(label: str) -> bool:
+    """Single short token such as "IC", "EC", "COP": a direct hit may be a different cell type."""
+    return " " not in label and len(label) <= 4
+
+
+def without_leading_words(label: str) -> list[str]:
+    """Shorter search queries, e.g. "Fetal Atrial Cardiomyocyte" -> ["Atrial Cardiomyocyte", "Cardiomyocyte"].
+
+    OLS requires every query word to match, so one unknown word gives no hits.
+    Suffixes made only of generic words ("cell") are skipped.
+    """
+    words = label.split()
+    out = [" ".join(words[i:]) for i in range(1, len(words))]
+    return [v for v in out if set(tokens(v)) - GENERIC_TOKENS]
+
+
+def without_qualifiers(label: str) -> str:
+    """Drop words like "fetal" or "cycling": "Fetal Astrocyte 3" -> "Astrocyte"."""
+    return " ".join(w for w in label.split() if w.lower() not in QUALIFIERS)
+
+
+def content_tokens(text: str) -> set[str]:
+    return set(tokens(text)) - GENERIC_TOKENS
+
+
+def taxon(label: str) -> str | None:
+    """Species a CL label is restricted to: "mouse", "human", "other", or None (general)."""
+    low = label.lower()
+    if low.endswith(("(mmus)", "(sensu mus)", ", mouse")):
+        return "mouse"
+    if low.endswith(("(primate)", "(homo sapiens)", ", human")):
+        return "human"
+    if re.search(r"\(sensu (?!vertebrata)[^)]*\)$", low):
+        return "other"
+    return None
 
 
 def is_unknown(label: str) -> bool:
@@ -46,6 +98,17 @@ def match_key(text: str) -> str:
     The same function is applied to ontology names and to user labels, so
     "T cells", "t-cell" and "cell T" all give the key of "T cell".
     """
+    return " ".join(sorted(tokens(text)))
+
+
+def tokens(text: str) -> list[str]:
+    """Lower-case singular word tokens; marker signs become words ("CD4+" -> "cd4 positive")."""
     s = unicodedata.normalize("NFKC", text).lower().replace("_", " ")
-    s = re.sub(r"[^\w\s+]", " ", s)
-    return " ".join(sorted(_singular(t) for t in s.split()))
+    s = re.sub(r"(\w)\+", r"\1 positive ", s)
+    s = re.sub(r"(\w)-(?=\s|$|,|/)", r"\1 negative ", s)
+    s = re.sub(r"[^\w\s]", " ", s)
+    return [_singular(t) for t in s.split()]
+
+
+def normalize_species(species: str) -> str | None:
+    return _SPECIES.get(species.strip().lower()) if species else None

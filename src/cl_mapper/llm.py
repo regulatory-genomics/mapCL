@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from collections.abc import Sequence
 from typing import Any
 
@@ -48,7 +49,10 @@ ASSESS_PROMPT = ChatPromptTemplate.from_messages([
      "4-5: loosely related (same broad category but different function or tissue)\n"
      "1-3: unrelated\n"
      "Judge by cell identity and function, not wording. Use the context when given. "
-     "If two candidates fit equally, prefer the one whose function matches the label best.\n\n"
+     "If two candidates fit equally, prefer the one whose function matches the label best.\n"
+     "A candidate that is not a cell type (organelle, tissue, drug, gene, disease) scores 1.\n"
+     "If the label is an abbreviation with several plausible meanings and the context "
+     "does not decide between them, score at most 5.\n\n"
      "User label: {label}\n{context}\n\nCandidates:\n{candidates}"),
 ])
 
@@ -66,33 +70,57 @@ def format_candidates(candidates: Sequence[Any]) -> str:
     return "\n".join(lines)
 
 
+# DeepSeek's API name "deepseek-flash" is served by DeepSeek V4.1 Flash.
+DEFAULT_MODEL = "deepseek:deepseek-flash"
+DEFAULT_REASONING_EFFORT: str | None = None
+
+
 def make_chat_model(
-    model: str = "openai:gpt-4.1-mini",
+    model: str = DEFAULT_MODEL,
     api_key: str | None = None,
     base_url: str | None = None,
+    reasoning_effort: str | None = DEFAULT_REASONING_EFFORT,
     **kwargs: Any,
 ) -> BaseChatModel:
     """Create a chat model with ``init_chat_model``.
 
-    ``model`` is "provider:model", e.g. "openai:gpt-4.1-mini" or
-    "anthropic:claude-sonnet-4-5" (install the matching langchain-<provider>
-    package). Use ``base_url`` for OpenAI-compatible servers such as vLLM or
-    Ollama. Without ``api_key`` the provider's own environment variable is used.
+    ``model`` is "provider:model", e.g. the default "deepseek:deepseek-flash"
+    (DeepSeek V4.1 Flash), "openai:gpt-6-luna" or "anthropic:claude-sonnet-5"
+    (install the matching langchain-<provider> package). Without ``api_key`` and
+    ``base_url`` the provider's environment variables are used (DEEPSEEK_API_KEY
+    and DEEPSEEK_API_BASE for DeepSeek). ``reasoning_effort`` only applies to
+    OpenAI reasoning models.
     """
     if api_key:
         kwargs["api_key"] = api_key
     if base_url:
         kwargs["base_url"] = base_url
-    kwargs.setdefault("temperature", 0)
+    if reasoning_effort and model.startswith("openai:"):
+        kwargs.setdefault("reasoning_effort", reasoning_effort)
+        if base_url or os.getenv("OPENAI_BASE_URL"):
+            # OpenAI-compatible proxies usually serve Chat Completions only.
+            kwargs.setdefault("use_responses_api", False)
+    else:
+        kwargs.setdefault("temperature", 0)
     kwargs.setdefault("max_retries", 3)
+    kwargs.setdefault("timeout", 180)
     return init_chat_model(model, **kwargs)
+
+
+def _structured(llm: BaseChatModel, schema: type[BaseModel]) -> Runnable:
+    # Tool calling works on OpenAI, Anthropic and OpenAI-compatible proxies;
+    # langchain-openai's default (json_schema) is often ignored by proxies.
+    try:
+        return llm.with_structured_output(schema, method="function_calling")
+    except TypeError:  # models without a ``method`` argument
+        return llm.with_structured_output(schema)
 
 
 def expansion_chain(llm: BaseChatModel) -> Runnable:
     """Inputs: label, context. Output: :class:`Expansion`."""
-    return EXPAND_PROMPT | llm.with_structured_output(Expansion)
+    return EXPAND_PROMPT | _structured(llm, Expansion)
 
 
 def assessment_chain(llm: BaseChatModel) -> Runnable:
     """Inputs: label, context, candidates. Output: :class:`Assessment`."""
-    return ASSESS_PROMPT | llm.with_structured_output(Assessment)
+    return ASSESS_PROMPT | _structured(llm, Assessment)

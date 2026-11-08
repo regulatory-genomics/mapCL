@@ -1,0 +1,770 @@
+cell type	cell_type_catelog	major_type_catelog	mapped_id	mapped_label	method	score	expanded_label	note
+Adipocyte	Adipocyte	Adipocyte	CL:0000136	adipocyte	direct			
+adipocyte	Adipocyte	Adipocyte	CL:0000136	adipocyte	direct			
+fibroadipogenic progenitor cell	Fibroadipogenic progenitor cell	Adipocyte progenitor	CL:0011026	progenitor cell	lexical			matched 'progenitor cell'
+Fetal Adrenal Cortical Cell	Fetal adrenal cortical cell	Adrenal cortical cell	CL:0002097	cortical cell of adrenal gland	lexical			all words of 'Adrenal Cortical Cell' found in the term
+Transitional Zone Cortical Cell	Transitional zone cortical cell	Adrenal cortical cell	CL:0009019	nephrogenic zone cell	lexical			all words of 'Zone Cortical Cell' found in the term
+zona fasciculata cell	Zona fasciculata cell	Adrenal cortical cell			unmapped			
+Zona Fasciculata Cortical Cell	Zona fasciculata cortical cell	Adrenal cortical cell	CL:0001032	cortical granule cell	lexical			all words of 'Cortical Cell' found in the term
+zona glomerulosa cell	Zona glomerulosa cell	Adrenal cortical cell	CL:0002099	type I cell of adrenal cortex	lexical			all words of 'zona glomerulosa cell' found in the term
+Zona Glomerulosa Cortical Cell	Zona glomerulosa cortical cell	Adrenal cortical cell	CL:0001032	cortical granule cell	lexical			all words of 'Cortical Cell' found in the term
+zona reticularis cell	Zona reticularis cell	Adrenal cortical cell			unmapped			
+amacrine cell	Amacrine cell	Amacrine cell	CL:0000561	amacrine cell	direct			
+AS	Astrocyte	Astrocyte			unmapped			
+ASCT_1	Astrocyte	Astrocyte			unmapped			
+ASCT_2	Astrocyte	Astrocyte			unmapped			
+ASCT_3	Astrocyte	Astrocyte			unmapped			
+ASC	Astrocyte	Astrocyte			unmapped			
+astrocyte	Astrocyte	Astrocyte	CL:0000127	astrocyte	direct			
+Astrocyte 2	Astrocyte	Astrocyte	CL:0000127	astrocyte	direct			
+astrocytes	Astrocyte	Astrocyte	CL:0000127	astrocyte	direct			
+Astrocyte 1	Astrocyte	Astrocyte	CL:0000127	astrocyte	direct			
+ASCNT_2	Astrocyte non-telencephalon	Astrocyte			unmapped			
+ASCNT_1	Astrocyte non-telencephalon	Astrocyte			unmapped			
+ASCNT_3	Astrocyte non-telencephalon	Astrocyte			unmapped			
+Fetal Astrocyte 1	Fetal astrocyte	Astrocyte	CL:0000127	astrocyte	lexical			matched 'Astrocyte'
+Fetal Astrocyte 3	Fetal astrocyte	Astrocyte	CL:0000127	astrocyte	lexical			matched 'Astrocyte'
+Fetal Astrocyte 2	Fetal astrocyte	Astrocyte	CL:0000127	astrocyte	lexical			matched 'Astrocyte'
+Fetal Astrocyte 4	Fetal astrocyte	Astrocyte	CL:0000127	astrocyte	lexical			matched 'Astrocyte'
+Fetal Astrocyte 5	Fetal astrocyte	Astrocyte	CL:0000127	astrocyte	lexical			matched 'Astrocyte'
+Astrocyte-Fibrous	Fibrous astrocyte	Astrocyte	CL:4042008	fibrous astrocyte	direct			
+Astrocyte-Immature	Immature astrocyte	Astrocyte	CL:0002626	immature astrocyte	direct			
+Astrocyte-Protoplasmic	Protoplasmic astrocyte	Astrocyte	CL:4042007	protoplasmic astrocyte	direct			
+35-B cell	B cell	B cell	CL:0000236	B cell	direct			
+B	B cell	B cell	CL:0000236	B cell	direct			abbreviation matched a CL synonym; check it
+Bcell	B cell	B cell	CL:0000236	B cell	direct			
+17_B	B cell	B cell	CL:0000236	B cell	direct			abbreviation matched a CL synonym; check it
+B cell	B cell	B cell	CL:0000236	B cell	direct			
+28-B cell	B cell	B cell	CL:0000236	B cell	direct			
+B cells	B cell	B cell	CL:0000236	B cell	direct			
+B Proliferating	Cycling B cell	B cell	CL:4033068	cycling B cell	direct			
+Fetal B Lymphocyte 2 (CXCR5+)	Fetal B lymphocyte CXCR5+	B cell	CL:0000236	B cell	lexical			matched 'B Lymphocyte'
+Fetal B Lymphocyte 3 (NPY+)	Fetal B lymphocyte NPY+	B cell	CL:0000236	B cell	lexical			matched 'B Lymphocyte'
+Fetal B Lymphocyte 1 (SPIB+)	Fetal B lymphocyte SPIB+	B cell	CL:0000236	B cell	lexical			matched 'B Lymphocyte'
+Memory B Cell	Memory B cell	B cell	CL:0000787	memory B cell	direct			
+B Memory	Memory B cell	B cell	CL:0000787	memory B cell	direct			
+Memory B	Memory B cell	B cell	CL:0000787	memory B cell	direct			
+B Naive	Naive B cell	B cell	CL:0000788	naive B cell	direct			
+Naive B	Naive B cell	B cell	CL:0000788	naive B cell	direct			
+Plasma Cell	Plasma cell	B cell	CL:0000786	plasma cell	direct			
+Plasma	Plasma cell	B cell	CL:0000786	plasma cell	direct			
+Plasma cells	Plasma cell	B cell	CL:0000786	plasma cell	direct			
+18_Plasma	Plasma cell	B cell	CL:0000786	plasma cell	direct			
+plasma cell	Plasma cell	B cell	CL:0000786	plasma cell	direct			
+Plasmablast	Plasmablast	B cell	CL:0000980	plasmablast	direct			
+16_Pre.B	Pre-B cell	B cell	CL:0000817	precursor B cell	lexical			all words of 'Pre B' found in the term
+pro/pre-B	Pro/pre-B cell	B cell	CL:0002045	fraction A pre-pro B cell	lexical			all words of 'pro/pre-B' found in the term
+OFF-bipolar cell	OFF-bipolar cell	Bipolar cell	CL:0000750	OFF-bipolar cell	direct			
+ON-bipolar cell	ON-bipolar cell	Bipolar cell	CL:0000749	ON-bipolar cell	direct			
+rod bipolar cell	Rod bipolar cell	Bipolar cell	CL:0000751	rod bipolar cell	direct			
+Atrial Cardiomyocyte	Atrial cardiomyocyte	Cardiomyocyte	CL:0000746	cardiac muscle cell	lexical			matched 'Cardiomyocyte'
+Cardiomyocyte	Cardiomyocyte	Cardiomyocyte	CL:0000746	cardiac muscle cell	direct			
+cardiomyocyte	Cardiomyocyte	Cardiomyocyte	CL:0000746	cardiac muscle cell	direct			
+Fetal Atrial Cardiomyocyte	Fetal atrial cardiomyocyte	Cardiomyocyte	CL:0000746	cardiac muscle cell	lexical			matched 'Cardiomyocyte'
+Fetal Ventricular Cardioyocyte	Fetal ventricular cardiomyocyte	Cardiomyocyte			unmapped			
+Ventricular Cardiomyocyte	Ventricular cardiomyocyte	Cardiomyocyte	CL:0000746	cardiac muscle cell	lexical			matched 'Cardiomyocyte'
+cholangiocyte	Cholangiocyte	Cholangiocyte	CL:1000488	cholangiocyte	direct			
+Fetal Cholangiocytes	Fetal cholangiocyte	Cholangiocyte	CL:1000488	cholangiocyte	lexical			matched 'Cholangiocytes'
+ArticularChon1	Articular chondrocyte	Chondrocyte			unmapped			
+ArticularChon2	Articular chondrocyte	Chondrocyte			unmapped			
+ChondroPro1	Chondrocyte progenitor	Chondrocyte			unmapped			
+ChondroPro2	Chondrocyte progenitor	Chondrocyte			unmapped			
+CyclingChon	Cycling chondrocyte	Chondrocyte			unmapped			
+DLK1hiChon	DLK1 chondrocyte	Chondrocyte			unmapped			
+FacialChon	Facial chondrocyte	Chondrocyte			unmapped			
+HypertrophicChon	Hypertrophic chondrocyte	Chondrocyte			unmapped			
+InterzoneChon	Interzone chondrocyte	Chondrocyte			unmapped			
+MandibularChon	Mandibular chondrocyte	Chondrocyte			unmapped			
+MaturingChon	Maturing chondrocyte	Chondrocyte			unmapped			
+PAX7hiChon	PAX7+ chondrocyte	Chondrocyte			unmapped			
+Matrix	Matrix cell	Connective tissue cell	CL:4310129	STRd D1 Matrix MSN matrix D1 medium spiny neuron (Primate)	lexical			all words of 'Matrix' found in the term
+TENO	Tenocyte	Connective tissue cell			unmapped			
+CLEC9a.DC	Dendritic cell	Dendritic cell			unmapped			
+Dendritic	Dendritic cell	Dendritic cell	CL:0000451	dendritic cell	direct			
+DC	Dendritic cell	Dendritic cell			unmapped			
+cDC2_2	cDC	Dendritic cell			unmapped			
+cDC2_1	cDC	Dendritic cell			unmapped			
+cDC2	cDC	Dendritic cell			unmapped			
+10_cDC	cDC	Dendritic cell	CL:0000990	conventional dendritic cell	direct			abbreviation matched a CL synonym; check it
+cDC1	cDC	Dendritic cell			unmapped			
+cDC	cDC	Dendritic cell	CL:0000990	conventional dendritic cell	direct			abbreviation matched a CL synonym; check it
+pDC	pDC	Dendritic cell	CL:0000784	plasmacytoid dendritic cell	direct			abbreviation matched a CL synonym; check it
+09_pDC	pDC	Dendritic cell	CL:0000784	plasmacytoid dendritic cell	direct			abbreviation matched a CL synonym; check it
+Alveolar Capillary Endothelial Cell	Alveolar capillary endothelial cell	Endothelial cell	CL:4028003	alveolar capillary type 2 endothelial cell	lexical			all words of 'Alveolar Capillary Endothelial Cell' found in the term
+Artery	Arterial endothelial cell	Endothelial cell	CL:1000413	endothelial cell of artery	lexical			all words of 'Artery' found in the term
+endothelial cell of artery	Arterial endothelial cell	Endothelial cell	CL:1000413	endothelial cell of artery	direct			
+Blood Brain Barrier Endothelial Cell	Blood-brain barrier endothelial cell	Endothelial cell			unmapped			
+Capillary	Capillary endothelial cell	Endothelial cell	CL:4028003	alveolar capillary type 2 endothelial cell	lexical			all words of 'Capillary' found in the term
+endocardial cell	Endocardial cell	Endothelial cell	CL:0002350	endocardial cell	direct			
+Endocardial Cell	Endocardial cell	Endothelial cell	CL:0002350	endocardial cell	direct			
+endothelial cell	Endothelial cell	Endothelial cell	CL:0000115	endothelial cell	direct			
+EC	Endothelial cell	Endothelial cell			unmapped			
+1-Endothelia	Endothelial cell	Endothelial cell			unmapped			
+33-Endothelia	Endothelial cell	Endothelial cell			unmapped			
+Endothelial	Endothelial cell	Endothelial cell	CL:0000115	endothelial cell	direct			
+Endothelium	Endothelial cell	Endothelial cell			unmapped			
+Endothelial cells	Endothelial cell	Endothelial cell	CL:0000115	endothelial cell	direct			
+Endothelial (Exocrine Tissues)	Exocrine tissue endothelial cell	Endothelial cell	CL:0000115	endothelial cell	lexical			matched 'Endothelial'
+Fetal Alveolar Endothelial Cell	Fetal alveolar endothelial cell	Endothelial cell	CL:4028003	alveolar capillary type 2 endothelial cell	lexical			all words of 'Alveolar Endothelial Cell' found in the term
+Fetal Endocardial Cell	Fetal endocardial cell	Endothelial cell	CL:0002350	endocardial cell	lexical			matched 'Endocardial Cell'
+Fetal Endothelial (General) 1	Fetal endothelial cell	Endothelial cell	CL:4047011	fetal vein endothelial cell	lexical			all words of 'Fetal Endothelial' found in the term
+Fetal Endothelial (General) 2	Fetal endothelial cell	Endothelial cell	CL:4047011	fetal vein endothelial cell	lexical			all words of 'Fetal Endothelial' found in the term
+Fetal Endothelial (General) 3	Fetal endothelial cell	Endothelial cell	CL:4047011	fetal vein endothelial cell	lexical			all words of 'Fetal Endothelial' found in the term
+Fetal Hepatic Endothelial 1	Fetal hepatic endothelial cell	Endothelial cell	CL:1000398	endothelial cell of hepatic sinusoid	lexical			all words of 'Hepatic Endothelial' found in the term
+Fetal Hepatic Endothelial 2	Fetal hepatic endothelial cell	Endothelial cell	CL:1000398	endothelial cell of hepatic sinusoid	lexical			all words of 'Hepatic Endothelial' found in the term
+Fetal Lymphatic Endothelial Cell	Fetal lymphatic endothelial cell	Endothelial cell	CL:0002138	endothelial cell of lymphatic vessel	lexical			matched 'Lymphatic Endothelial Cell'
+Fetal Placental Endothelial Cell	Fetal placental endothelial cell	Endothelial cell	CL:0009092	endothelial cell of placenta	lexical			matched 'Placental Endothelial Cell'
+general capillary cell	Capillary cell	Endothelial cell	CL:4028002	alveolar capillary type 1 endothelial cell	lexical			all words of 'general capillary cell' found in the term
+Endothelial Cell (General) 1	Endothelial cell	Endothelial cell	CL:0000115	endothelial cell	lexical			matched 'Endothelial Cell'
+Endothelial Cell (General) 2	Endothelial cell	Endothelial cell	CL:0000115	endothelial cell	lexical			matched 'Endothelial Cell'
+Endothelial Cell (General) 3	Endothelial cell	Endothelial cell	CL:0000115	endothelial cell	lexical			matched 'Endothelial Cell'
+Lymphatic Endothelial Cell	Lymphatic endothelial cell	Endothelial cell	CL:0002138	endothelial cell of lymphatic vessel	direct			
+Lymphatic Endothelial	Lymphatic endothelial cell	Endothelial cell	CL:0002138	endothelial cell of lymphatic vessel	direct			
+Lymphatic	Lymphatic endothelial cell	Endothelial cell	CL:0002138	endothelial cell of lymphatic vessel	lexical			all words of 'Lymphatic' found in the term
+lymphatic endothelial cell	Lymphatic endothelial cell	Endothelial cell	CL:0002138	endothelial cell of lymphatic vessel	direct			
+Lymph.Endo	Lymphatic endothelial cell	Endothelial cell			unmapped			
+Lymphatic Endothelial Cells	Lymphatic endothelial cell	Endothelial cell	CL:0002138	endothelial cell of lymphatic vessel	direct			
+Endothelial Cell (Myocardial)	Myocardial endothelial cell	Endothelial cell	CL:0000115	endothelial cell	lexical			matched 'Endothelial Cell'
+PER.END	Perivascular endothelial cell	Endothelial cell			unmapped			
+Vascular	Vascular	Endothelial cell	CL:0002139	endothelial cell of vascular tree	lexical			all words of 'Vascular' found in the term
+Vas.Endo_1	Vascular endothelial cell	Endothelial cell			unmapped			
+Vas.Endo_2	Vascular endothelial cell	Endothelial cell			unmapped			
+Vas.Endo_3	Vascular endothelial cell	Endothelial cell			unmapped			
+Vein	Venous endothelial cell	Endothelial cell	CL:0002543	vein endothelial cell	lexical			abbreviation 'Vein' is ambiguous without an LLM; check it
+vein endothelial cell	Venous endothelial cell	Endothelial cell	CL:0002543	vein endothelial cell	direct			
+Basal	Basal cell	Epithelial cell	CL:0000646	basal cell	direct			
+basal cell	Basal cell	Epithelial cell	CL:0000646	basal cell	direct			
+CHO	Choroid plexus cell	Epithelial cell			unmapped			
+Cilliated Cell	Ciliated cell	Epithelial cell			unmapped			
+Ciliated	Ciliated cell	Epithelial cell	CL:0000064	ciliated cell	direct			
+ciliated cell	Ciliated cell	Epithelial cell	CL:0000064	ciliated cell	direct			
+20-Ciliated	Ciliated cell	Epithelial cell	CL:0000064	ciliated cell	direct			
+Cortical Epithelial-like	Cortical epithelial cell	Epithelial cell	CL:0002584	renal cortical epithelial cell	lexical			all words of 'Cortical Epithelial' found in the term
+ductal cell	Ductal cell	Epithelial cell	CL:0002079	pancreatic ductal cell	lexical			all words of 'ductal cell' found in the term
+Ductal Cell (Pancreatic)	Ductal cell	Epithelial cell	CL:0002079	pancreatic ductal cell	direct			
+Ductal	Ductal cell	Epithelial cell	CL:0002079	pancreatic ductal cell	lexical			all words of 'Ductal' found in the term
+Epithelial	Epithelial cell	Epithelial cell	CL:0000066	epithelial cell	direct			
+Epithelium	Epithelial cell	Epithelial cell	CL:0002169	basal cell of olfactory epithelium	lexical			all words of 'Epithelium' found in the term
+10-Epithelial cell	Epithelial cell	Epithelial cell	CL:0000066	epithelial cell	direct			
+19-Epithelial cell	Epithelial cell	Epithelial cell	CL:0000066	epithelial cell	direct			
+3-Epithelial cell	Epithelial cell	Epithelial cell	CL:0000066	epithelial cell	direct			
+9-Epithelial cell	Epithelial cell	Epithelial cell	CL:0000066	epithelial cell	direct			
+34-Epithelial cell	Epithelial cell	Epithelial cell	CL:0000066	epithelial cell	direct			
+17-Epithelial cell	Epithelial cell	Epithelial cell	CL:0000066	epithelial cell	direct			
+epithelial ciliated cell	Epithelial ciliated cell	Epithelial cell	CL:0000067	ciliated epithelial cell	direct			
+epithelial secretory cell	Epithelial secretory cell	Epithelial cell	CL:1100001	secretory epithelial cell	direct			
+Fetal Cilliated Epithelial Cell	Fetal ciliated epithelial cell	Epithelial cell	CL:0000066	epithelial cell	lexical			matched 'Epithelial Cell'
+Fetal Goblet Cell	Fetal goblet cell	Epithelial cell	CL:0000160	goblet cell	lexical			matched 'Goblet Cell'
+Fetal Mesothelial Cell	Fetal mesothelial cell	Epithelial cell	CL:0000077	mesothelial cell	lexical			matched 'Mesothelial Cell'
+Fetal Pancreatic Ductal Cell	Fetal pancreatic ductal cell	Epithelial cell	CL:0002079	pancreatic ductal cell	lexical			matched 'Pancreatic Ductal Cell'
+Goblet cells	Goblet cell	Epithelial cell	CL:0000160	goblet cell	direct			
+Goblet	Goblet cell	Epithelial cell	CL:0000160	goblet cell	direct			
+Infundibulum	Infundibular cell	Epithelial cell			unmapped			
+Isthmus	Isthmus epithelial cell	Epithelial cell	CL:0020012	hair follicle isthmus-associated fibroblast	lexical			all words of 'Isthmus' found in the term
+Mesothelial Cell	Mesothelial cell	Epithelial cell	CL:0000077	mesothelial cell	direct			
+mesothelial cell	Mesothelial cell	Epithelial cell	CL:0000077	mesothelial cell	direct			
+Mesothelial	Mesothelial cell	Epithelial cell	CL:0000077	mesothelial cell	direct			
+Pancreatic Delta,Gamma cell	Pancreatic endocrine cell	Epithelial cell	CL:0000798	gamma-delta T cell	lexical			all words of 'Delta Gamma cell' found in the term
+PEC	Prostate epithelial cell	Epithelial cell			unmapped			
+SIGA	Salivary gland acinar cell	Epithelial cell			unmapped			
+21-Unciliated epithelia 1	Unciliated epithelial cell	Epithelial cell			unmapped			
+22-Unciliated epithelia 2	Unciliated epithelial cell	Epithelial cell			unmapped			
+11-Unciliated epithelia 1	Unciliated epithelial cell	Epithelial cell			unmapped			
+31-Unciliated epithelia 1	Unciliated epithelial cell	Epithelial cell			unmapped			
+urothelial basal cell	Urothelial basal cell	Epithelial cell	CL:1000486	basal cell of urothelium	direct			
+urothelial intermediate cell	Urothelial intermediate cell	Epithelial cell	CL:4030055	intermediate cell of urothelium	direct			
+urothelial umbrella cell	Urothelial umbrella cell	Epithelial cell	CL:4030056	umbrella cell of urothelium	lexical			all words of 'umbrella cell' found in the term
+adrenal medulla chromaffin cell	Adrenal medulla chromaffin cell	Epithelial cell of adrenal gland	CL:0000336	adrenal medulla chromaffin cell	direct			
+Fetal Adrenal Chromaffin Cell	Fetal adrenal chromaffin cell	Epithelial cell of adrenal gland	CL:1000426	chromaffin cell of adrenal gland	lexical			matched 'Adrenal Chromaffin Cell'
+Fetal Adrenal Sympathoblasts	Fetal adrenal sympathoblast	Epithelial cell of adrenal gland			unmapped			
+Esophageal Epithelial Cell	Esophageal epithelial cell	Epithelial cell of esophagus	CL:0009096	esophagus non-keratinized squamous epithelial cell	lexical			all words of 'Esophageal Epithelial Cell' found in the term
+Best4+ Enterocytes	BEST4+ enterocyte	Epithelial cell of intestine	CL:4030026	BEST4+ enterocyte	direct			
+BEST4+ enterocyte	BEST4+ enterocyte	Epithelial cell of intestine	CL:4030026	BEST4+ enterocyte	direct			
+Colon Epithelial Cell 1	Colonic epithelial cell	Epithelial cell of intestine	CL:0011108	colon epithelial cell	direct			
+Colon Epithelial Cell 2	Colonic epithelial cell	Epithelial cell of intestine	CL:0011108	colon epithelial cell	direct			
+Colon Epithelial Cell 3	Colonic epithelial cell	Epithelial cell of intestine	CL:0011108	colon epithelial cell	direct			
+colon stem cell	Colonic stem cell	Epithelial cell of intestine	CL:0009043	intestinal crypt stem cell of colon	lexical			all words of 'colon stem cell' found in the term
+Enterochromaffin Cell	Enterochromaffin cell	Epithelial cell of intestine	CL:0000577	type EC enteroendocrine cell	direct			
+Enterocytes	Enterocyte	Epithelial cell of intestine	CL:0000584	enterocyte	direct			
+enterocyte	Enterocyte	Epithelial cell of intestine	CL:0000584	enterocyte	direct			
+Enteroendocrine	Enteroendocrine cell	Epithelial cell of intestine	CL:0000164	enteroendocrine cell	direct			
+enteroendocrine cell	Enteroendocrine cell	Epithelial cell of intestine	CL:0000164	enteroendocrine cell	direct			
+Fetal Enterocyte 1	Fetal enterocyte	Epithelial cell of intestine	CL:0009067	vacuolated fetal-type enterocyte	lexical			all words of 'Fetal Enterocyte' found in the term
+Fetal Enterocyte 2	Fetal enterocyte	Epithelial cell of intestine	CL:0009067	vacuolated fetal-type enterocyte	lexical			all words of 'Fetal Enterocyte' found in the term
+Fetal Enterocyte 3	Fetal enterocyte	Epithelial cell of intestine	CL:0009067	vacuolated fetal-type enterocyte	lexical			all words of 'Fetal Enterocyte' found in the term
+Fetal Enteroendocrine	Fetal enteroendocrine cell	Epithelial cell of intestine	CL:0000164	enteroendocrine cell	lexical			matched 'Enteroendocrine'
+Colonic Goblet Cell	Goblet cell	Epithelial cell of intestine	CL:0000160	goblet cell	lexical			matched 'Goblet Cell'
+Small Intestinal Goblet Cell	Goblet cell	Epithelial cell of intestine	CL:1000495	small intestine goblet cell	direct			
+goblet cell	Goblet cell	Epithelial cell of intestine	CL:0000160	goblet cell	direct			
+Immature Enterocytes	Immature enterocyte	Epithelial cell of intestine	CL:0009067	vacuolated fetal-type enterocyte	lexical			all words of 'Immature Enterocytes' found in the term
+immature enterocyte	Immature enterocyte	Epithelial cell of intestine	CL:0009067	vacuolated fetal-type enterocyte	lexical			all words of 'Immature Enterocytes' found in the term
+Immature Goblet	Immature goblet cell	Epithelial cell of intestine	CL:0000160	goblet cell	lexical			matched 'Goblet'
+immature goblet cell	Immature goblet cell	Epithelial cell of intestine	CL:0000160	goblet cell	lexical			matched 'goblet cell'
+Paneth Cell	Paneth cell	Epithelial cell of intestine	CL:0000510	paneth cell	direct			
+Small Intestinal Enterocyte	Small intestinal enterocyte	Epithelial cell of intestine	CL:1000335	enterocyte of epithelium of intestinal villus	lexical			all words of 'Intestinal Enterocyte' found in the term
+Tuft cells	Tuft cell	Epithelial cell of intestine	CL:0002204	tuft cell	direct			
+Tuft Cell	Tuft cell	Epithelial cell of intestine	CL:0002204	tuft cell	direct			
+tuft cell	Tuft cell	Epithelial cell of intestine	CL:0002204	tuft cell	direct			
+XDH+ Jejunum	XDH+ jejunal cell	Epithelial cell of intestine	CL:1000277	smooth muscle fiber of jejunum	lexical			all words of 'Jejunum' found in the term
+ATL	Ascending thin limb cell	Epithelial cell of kidney			unmapped			
+CNT	Connecting tubule cell	Epithelial cell of kidney			unmapped			
+DTL	Descending thin limb cell	Epithelial cell of kidney			unmapped			
+DCT	Distal convoluted tubule cell	Epithelial cell of kidney			unmapped			
+Fetal Metanephric Cell	Fetal metanephric cell	Epithelial cell of kidney	CL:0002525	metanephric podocyte	lexical			all words of 'Metanephric Cell' found in the term
+Fetal Ureteric Bud Cell	Fetal ureteric bud cell	Epithelial cell of kidney	CL:4030066	ureteric bud cell	lexical			matched 'Ureteric Bud Cell'
+IC	Intercalated cell	Epithelial cell of kidney	CL:4070012	inferior cardiac neuron	direct			abbreviation matched a CL synonym; check it
+POD	Podocyte	Epithelial cell of kidney			unmapped			
+PC	Principal cell	Epithelial cell of kidney	CL:0000121	Purkinje cell	lexical			abbreviation 'PC' is ambiguous without an LLM; check it
+Proximal tubule	Proximal tubule cell	Epithelial cell of kidney	CL:0002306	epithelial cell of proximal tubule	lexical			all words of 'Proximal tubule' found in the term
+PT	Proximal tubule cell	Epithelial cell of kidney	CL:4023041	L5 extratelencephalic projecting glutamatergic cortical neuron	lexical			abbreviation 'PT' is ambiguous without an LLM; check it
+TAL	Thick ascending limb cell	Epithelial cell of kidney			unmapped			
+aerocyte	Aerocyte	Epithelial cell of lung	CL:4028003	alveolar capillary type 2 endothelial cell	lexical			all words of 'aerocyte' found in the term
+Airway Goblet Cell	Airway goblet cell	Epithelial cell of lung	CL:0000160	goblet cell	lexical			matched 'Goblet Cell'
+Alveolar Type 1 (AT1) Cell	Alveolar epithelial cell	Epithelial cell of lung	CL:0002062	pulmonary alveolar type 1 cell	lexical			all words of 'Alveolar Type 1 Cell' found in the term
+Alveolar Type 2 (AT2) Cell	Alveolar epithelial cell	Epithelial cell of lung	CL:0002063	pulmonary alveolar type 2 cell	lexical			all words of 'Alveolar Type 2 Cell' found in the term
+Alverolar Type 2,Immune	Alveolar epithelial cell with immune features	Epithelial cell of lung			unmapped			
+AT1	Alveolar type 1 cell	Epithelial cell of lung	CL:0002062	pulmonary alveolar type 1 cell	lexical			abbreviation 'AT1' is ambiguous without an LLM; check it
+alveolar type 1 cell	Alveolar type 1 cell	Epithelial cell of lung	CL:0002062	pulmonary alveolar type 1 cell	lexical			all words of 'Alveolar Type 1 Cell' found in the term
+AT2	Alveolar type 2 cell	Epithelial cell of lung	CL:0002063	pulmonary alveolar type 2 cell	lexical			abbreviation 'AT2' is ambiguous without an LLM; check it
+alveolar type 2 cell	Alveolar type 2 cell	Epithelial cell of lung	CL:0002063	pulmonary alveolar type 2 cell	lexical			all words of 'Alveolar Type 2 Cell' found in the term
+Club Cell	Club cell	Epithelial cell of lung	CL:0000158	club cell	direct			
+Club	Club cell	Epithelial cell of lung	CL:0000158	club cell	direct			abbreviation matched a CL synonym; check it
+Fetal Broncial and Alveolar Epithelial Cell 1	Fetal bronchial and alveolar epithelial cell	Epithelial cell of lung	CL:0000322	pulmonary alveolar epithelial cell	lexical			all words of 'and Alveolar Epithelial Cell' found in the term
+Fetal Broncial and Alveolar Epithelial Cell 2	Fetal bronchial and alveolar epithelial cell	Epithelial cell of lung	CL:0000322	pulmonary alveolar epithelial cell	lexical			all words of 'and Alveolar Epithelial Cell' found in the term
+Fetal Pulmonary Neuroendocrine Cell	Fetal pulmonary neuroendocrine cell	Epithelial cell of lung	CL:1000223	pulmonary neuroendocrine cell	lexical			matched 'Pulmonary Neuroendocrine Cell'
+AT1/AT2	Mixed alveolar epithelial cell	Epithelial cell of lung			unmapped			
+Basal Epithelial (Mammary)	Mammary basal epithelial cell	Epithelial cell of mammary gland	CL:0002329	basal epithelial cell of tracheobronchial tree	lexical			all words of 'Basal Epithelial' found in the term
+Mammary Epithelial	Mammary epithelial cell	Epithelial cell of mammary gland	CL:0002327	mammary gland epithelial cell	direct			
+Mammary Luminal Epithelial Cell 2	Mammary luminal epithelial cell	Epithelial cell of mammary gland	CL:0002326	luminal epithelial cell of mammary gland	lexical			all words of 'Mammary Luminal Epithelial Cell' found in the term
+Mammary Luminal Epithelial Cell 1	Mammary luminal epithelial cell	Epithelial cell of mammary gland	CL:0002326	luminal epithelial cell of mammary gland	lexical			all words of 'Mammary Luminal Epithelial Cell' found in the term
+Basal Epidermal (Skin)	Basal epidermal cell	Epithelial cell of skin	CL:0002187	basal cell of epidermis	lexical			matched 'Basal Epidermal'
+Basal.Kc_1	Basal keratinocyte	Epithelial cell of skin			unmapped			
+Eccrine Epidermal (Skin)	Eccrine epidermal cell	Epithelial cell of skin	CL:0000362	epidermal cell	lexical			matched 'Epidermal'
+Eccrine	Eccrine epithelial cell	Epithelial cell of skin	CL:0000434	eccrine cell	direct			
+Granular Epidermal (Skin)	Granular epidermal cell	Epithelial cell of skin	CL:0000362	epidermal cell	lexical			matched 'Epidermal'
+Inf.Segment_1	Inf.Segment	Epithelial cell of skin	CL:4030011	epithelial cell of proximal tubule segment 3	lexical			all words of 'Segment' found in the term
+Inf.Segment_2	Inf.Segment	Epithelial cell of skin	CL:4030011	epithelial cell of proximal tubule segment 3	lexical			all words of 'Segment' found in the term
+Keratinocyte 1	Keratinocyte	Epithelial cell of skin	CL:0000312	keratinocyte	direct			
+Keratinocyte 2	Keratinocyte	Epithelial cell of skin	CL:0000312	keratinocyte	direct			
+Sebaceous	Sebaceous cell	Epithelial cell of skin	CL:2000021	sebaceous gland cell	lexical			all words of 'Sebaceous' found in the term
+Myoepithelial (Skin)	Skin myoepithelial cell	Epithelial cell of skin	CL:0000185	myoepithelial cell	lexical			matched 'Myoepithelial'
+Spinous.Kc_2	Spinous keratinocyte	Epithelial cell of skin			unmapped			
+Spinous.Kc_1	Spinous keratinocyte	Epithelial cell of skin			unmapped			
+Thyroid Follicular Cell	Thyroid follicular cell	Epithelial cell of thyroid	CL:0002258	thyroid follicular cell	direct			
+AT2-pro	AT2 progenitor cell	Epithelial progenitor			unmapped			
+Enterocyte Progenitors	Enterocyte progenitor	Epithelial progenitor	CL:0011026	progenitor cell	lexical			matched 'Progenitors'
+Secretory TA	Secretory transit-amplifying cell	Epithelial progenitor			unmapped			
+TA2	Transit-amplifying cell	Epithelial progenitor			unmapped			
+TA1	Transit-amplifying cell	Epithelial progenitor			unmapped			
+transit-amplifying cell	Transit-amplifying cell	Epithelial progenitor	CL:0009010	transit amplifying cell	direct			
+early-Ery	Early erythrocyte	Erythrocyte/Megakaryocyte			unmapped			
+02_Early.Eryth	Early erythrocyte	Erythrocyte/Megakaryocyte			unmapped			
+erythroblast	Erythroblast	Erythrocyte/Megakaryocyte	CL:0000765	erythroblast	direct			
+Erythroid	Erythroid cell	Erythrocyte/Megakaryocyte	CL:0000038	erythroid progenitor cell	lexical			all words of 'Erythroid' found in the term
+Erythriod cells	Erythroid cell	Erythrocyte/Megakaryocyte			unmapped			
+Erythroid_Like	Erythroid cell	Erythrocyte/Megakaryocyte	CL:0000038	erythroid progenitor cell	lexical			all words of 'Erythroid' found in the term
+Fetal Erythroblast 3	Fetal erythroblast	Erythrocyte/Megakaryocyte	CL:0000765	erythroblast	lexical			matched 'Erythroblast'
+Fetal Erythroblast 2	Fetal erythroblast	Erythrocyte/Megakaryocyte	CL:0000765	erythroblast	lexical			matched 'Erythroblast'
+Fetal Erythroblast 1	Fetal erythroblast	Erythrocyte/Megakaryocyte	CL:0000765	erythroblast	lexical			matched 'Erythroblast'
+Fetal Erythroblast 4	Fetal erythroblast	Erythrocyte/Megakaryocyte	CL:0000765	erythroblast	lexical			matched 'Erythroblast'
+Fetal Erythroblast 5	Fetal erythroblast	Erythrocyte/Megakaryocyte	CL:0000765	erythroblast	lexical			matched 'Erythroblast'
+Fetal Megakaryocyte	Fetal megakaryocyte	Erythrocyte/Megakaryocyte	CL:0000556	megakaryocyte	lexical			matched 'Megakaryocyte'
+late-Ery	Late erythrocyte	Erythrocyte/Megakaryocyte			unmapped			
+03_Late.Eryth	Late erythrocyte	Erythrocyte/Megakaryocyte			unmapped			
+BFEXA	Basal forebrain excitatory neuron	Excitatory neuron			unmapped			
+Cajal-Retzius cell	Cajal-Retzius cell	Excitatory neuron	CL:0000695	Cajal-Retzius cell	direct			
+CBGRC	Cerebellar granule cell	Excitatory neuron			unmapped			
+cerebellar granule1	Cerebellar granule cell	Excitatory neuron			unmapped			
+cerebellar granule2	Cerebellar granule cell	Excitatory neuron			unmapped			
+CNGA_1	Cerebellar nucleus glutamatergic neuron	Excitatory neuron			unmapped			
+CNGA_2	Cerebellar nucleus glutamatergic neuron	Excitatory neuron			unmapped			
+ET	ET excitatory neuron	Excitatory neuron			unmapped			
+EX	Excitatory neuron	Excitatory neuron			unmapped			
+Fetal Excitatory Neuron 1	Fetal excitatory neuron	Excitatory neuron	CL:4023039	amygdala excitatory neuron	lexical			all words of 'Excitatory Neuron' found in the term
+Fetal Excitatory Neuron 4	Fetal excitatory neuron	Excitatory neuron	CL:4023039	amygdala excitatory neuron	lexical			all words of 'Excitatory Neuron' found in the term
+Fetal Excitatory Neuron 3	Fetal excitatory neuron	Excitatory neuron	CL:4023039	amygdala excitatory neuron	lexical			all words of 'Excitatory Neuron' found in the term
+Fetal Excitatory Neuron 6	Fetal excitatory neuron	Excitatory neuron	CL:4023039	amygdala excitatory neuron	lexical			all words of 'Excitatory Neuron' found in the term
+Fetal Excitatory Neuron 9	Fetal excitatory neuron	Excitatory neuron	CL:4023039	amygdala excitatory neuron	lexical			all words of 'Excitatory Neuron' found in the term
+Fetal Excitatory Neuron 8	Fetal excitatory neuron	Excitatory neuron	CL:4023039	amygdala excitatory neuron	lexical			all words of 'Excitatory Neuron' found in the term
+Fetal Excitatory Neuron 5	Fetal excitatory neuron	Excitatory neuron	CL:4023039	amygdala excitatory neuron	lexical			all words of 'Excitatory Neuron' found in the term
+Fetal Excitatory Neuron 7	Fetal excitatory neuron	Excitatory neuron	CL:4023039	amygdala excitatory neuron	lexical			all words of 'Excitatory Neuron' found in the term
+Fetal Excitatory Neuron 10	Fetal excitatory neuron	Excitatory neuron	CL:4023039	amygdala excitatory neuron	lexical			all words of 'Excitatory Neuron' found in the term
+Fetal Excitatory Neuron 11	Fetal excitatory neuron	Excitatory neuron	CL:4023039	amygdala excitatory neuron	lexical			all words of 'Excitatory Neuron' found in the term
+Fetal Excitatory Neuron 12	Fetal excitatory neuron	Excitatory neuron	CL:4023039	amygdala excitatory neuron	lexical			all words of 'Excitatory Neuron' found in the term
+Fetal Excitatory Neuron 2	Fetal excitatory neuron	Excitatory neuron	CL:4023039	amygdala excitatory neuron	lexical			all words of 'Excitatory Neuron' found in the term
+Glutamatergic Neuron 1	Glutamatergic neuron	Excitatory neuron	CL:0000679	glutamatergic neuron	direct			
+Glutamatergic Neuron 2	Glutamatergic neuron	Excitatory neuron	CL:0000679	glutamatergic neuron	direct			
+EN-IT-Immature	IT immature excitatory neuron	Excitatory neuron			unmapped			
+ITL23_1	L2/3 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL23_6	L2/3 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL23_4	L2/3 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL23_5	L2/3 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL23_3	L2/3 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL23_2	L2/3 IT excitatory neuron	Excitatory neuron			unmapped			
+EN-L2_3-IT	L2/3 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL34	L3/4 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL4_2	L4 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL4_1	L4 IT excitatory neuron	Excitatory neuron			unmapped			
+EN-L4-IT	L4 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL45_1	L4/5 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL45_2	L4/5 IT excitatory neuron	Excitatory neuron			unmapped			
+EN-L5-ET	L5 ET excitatory neuron	Excitatory neuron			unmapped			
+ITL5_1	L5 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL5_2	L5 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL5_3	L5 IT excitatory neuron	Excitatory neuron			unmapped			
+EN-L5-IT	L5 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL5_4	L5 IT excitatory neuron	Excitatory neuron			unmapped			
+EN-L5_6-NP	L5/6 NP excitatory neuron	Excitatory neuron			unmapped			
+EN-L6-CT	L6 CT excitatory neuron	Excitatory neuron			unmapped			
+ITL6_1_1	L6 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL6_2_1	L6 IT excitatory neuron	Excitatory neuron			unmapped			
+EN-L6-IT	L6 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL6_1_2	L6 IT excitatory neuron	Excitatory neuron			unmapped			
+ITL6_2_2	L6 IT excitatory neuron	Excitatory neuron			unmapped			
+EN-L6b	L6b excitatory neuron	Excitatory neuron			unmapped			
+L6B_1	Layer 6B neuron	Excitatory neuron	CL:4023038	L6b glutamatergic cortical neuron	lexical			abbreviation 'L6B' is ambiguous without an LLM; check it
+L6B_2	Layer 6B neuron	Excitatory neuron	CL:4023038	L6b glutamatergic cortical neuron	lexical			abbreviation 'L6B' is ambiguous without an LLM; check it
+EN-Newborn	Newborn excitatory neuron	Excitatory neuron			unmapped			
+EN-Non-IT-Immature	Non-IT immature excitatory neuron	Excitatory neuron			unmapped			
+TP	Tufted-pyramidal neuron	Excitatory neuron			unmapped			
+ITV1C_1	V1 cortex excitatory neuron	Excitatory neuron			unmapped			
+ITV1C_2	V1 cortex excitatory neuron	Excitatory neuron			unmapped			
+ITV1C_3	V1 cortex excitatory neuron	Excitatory neuron			unmapped			
+Fetal Photoreceptor Cell	Fetal photoreceptor cell	Fetal retinal cell	CL:0000210	photoreceptor cell	lexical			matched 'Photoreceptor Cell'
+Fetal Retinal Neuron	Fetal retinal neuron	Fetal retinal cell	CL:0000748	retinal bipolar neuron	lexical			all words of 'Retinal Neuron' found in the term
+Fetal Retinal Pigment Cell	Fetal retinal pigment cell	Fetal retinal cell	CL:0002586	retinal pigment epithelial cell	lexical			all words of 'Retinal Pigment Cell' found in the term
+Fetal Retinal Progenitors and Muller glia 1	Fetal retinal progenitor and Müller glial cell	Fetal retinal cell	CL:0000636	Mueller cell	lexical			all words of 'and Muller glia' found in the term
+Fetal Retinal Progenitors and Muller glia 2	Fetal retinal progenitor and Müller glial cell	Fetal retinal cell	CL:0000636	Mueller cell	lexical			all words of 'and Muller glia' found in the term
+Adventitial fibroblast	Adventitial fibroblast	Fibroblast	CL:4052030	adventitial fibroblast	direct			
+adventitial fibroblast	Adventitial fibroblast	Fibroblast	CL:4052030	adventitial fibroblast	direct			
+alveolar fibroblast	Alveolar fibroblast	Fibroblast	CL:4028006	alveolar adventitial fibroblast	lexical			all words of 'alveolar fibroblast' found in the term
+Cancer Associated Fibroblasts	Cancer associated fibroblast	Fibroblast	CL:0020011	hair follicle associated fibroblast	lexical			all words of 'Associated Fibroblasts' found in the term
+Cardiac Fibroblasts	Cardiac fibroblast	Fibroblast	CL:0002548	fibroblast of cardiac tissue	direct			
+crypt fibroblast	Crypt fibroblast	Fibroblast	CL:4052008	crypt-bottom fibroblast	lexical			all words of 'crypt fibroblast' found in the term
+Crypt Fibroblasts 1	Crypt fibroblast	Fibroblast	CL:4052008	crypt-bottom fibroblast	lexical			all words of 'crypt fibroblast' found in the term
+Crypt Fibroblasts 2	Crypt fibroblast	Fibroblast	CL:4052008	crypt-bottom fibroblast	lexical			all words of 'crypt fibroblast' found in the term
+Crypt Fibroblasts 3	Crypt fibroblast	Fibroblast	CL:4052008	crypt-bottom fibroblast	lexical			all words of 'crypt fibroblast' found in the term
+Crypt Fibroblasts 4	Crypt fibroblast	Fibroblast	CL:4052008	crypt-bottom fibroblast	lexical			all words of 'crypt fibroblast' found in the term
+DermFIB1	Dermal fibroblast	Fibroblast			unmapped			
+D.Fib_1	Dermal fibroblast	Fibroblast			unmapped			
+DermFIB2	Dermal fibroblast	Fibroblast			unmapped			
+D.Fib_2	Dermal fibroblast	Fibroblast			unmapped			
+D.Fib_3	Dermal fibroblast	Fibroblast			unmapped			
+D.Fib_4	Dermal fibroblast	Fibroblast			unmapped			
+D.Papilla	Dermal papilla cell	Fibroblast	CL:0000346	hair follicle dermal papilla cell	lexical			all words of 'Papilla' found in the term
+Fibroblast (Epithelial)	Epithelial-associated fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+Fetal Cardiac Fibroblast	Fetal cardiac fibroblast	Fibroblast	CL:0002548	fibroblast of cardiac tissue	lexical			matched 'Cardiac Fibroblast'
+Fetal Fibroblast (Gastrointestinal)	Fetal gastrointestinal fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+Fetal Fibroblast (General) 2	Fetal fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+Fetal Fibroblast (General) 3	Fetal fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+Fetal Fibroblast (General) 1	Fetal fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+Fetal Fibroblast (General) 4	Fetal fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+Fetal Fibroblast (General) 5	Fetal fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+Fetal Placental Fibroblast 1	Fetal placental fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+Fetal Placental Fibroblast 2	Fetal placental fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+Fetal Fibroblast (Sk Muscle Associated) 1	Fetal skeletal muscle associated fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+Fetal Fibroblast (Splenic)	Fetal splenic fibroblast	Fibroblast	CL:2000051	splenic fibroblast	lexical			matched 'Splenic Fibroblast'
+Fibroblast (General)	Fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+fibroblast	Fibroblast	Fibroblast	CL:0000057	fibroblast	direct			
+Fibroblast	Fibroblast	Fibroblast	CL:0000057	fibroblast	direct			
+0-Fibroblast	Fibroblast	Fibroblast	CL:0000057	fibroblast	direct			
+27-Fibroblast	Fibroblast	Fibroblast	CL:0000057	fibroblast	direct			
+26-Fibroblast	Fibroblast	Fibroblast	CL:0000057	fibroblast	direct			
+24-Fibroblast	Fibroblast	Fibroblast	CL:0000057	fibroblast	direct			
+18-Fibroblast	Fibroblast	Fibroblast	CL:0000057	fibroblast	direct			
+6-Fibroblast	Fibroblast	Fibroblast	CL:0000057	fibroblast	direct			
+25-Fibroblast	Fibroblast	Fibroblast	CL:0000057	fibroblast	direct			
+FIB	Fibroblast	Fibroblast			unmapped			
+16-Fibroblast	Fibroblast	Fibroblast	CL:0000057	fibroblast	direct			
+29-Fibroblast	Fibroblast	Fibroblast	CL:0000057	fibroblast	direct			
+FibroPRO1	Fibroblast progenitor	Fibroblast			unmapped			
+FibroPRO2	Fibroblast progenitor	Fibroblast			unmapped			
+Fibroblast (Gastrointestinal)	Gastrointestinal fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+Fibroblast (Liver Adrenal)	Liver/adrenal fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+myofibroblast	Myofibroblast	Fibroblast	CL:0000186	myofibroblast cell	direct			
+MyoFib.	Myofibroblast	Fibroblast			unmapped			
+MyofibPRO	Myofibroblast progenitor	Fibroblast			unmapped			
+PerineuralFIB	Perineural fibroblast	Fibroblast			unmapped			
+Fibroblast (Peripheral Nerve)	Peripheral nerve fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+preCAF	Pre-cancer associated fibroblast	Fibroblast			unmapped			
+Fibroblast (Sk Muscle Associated)	Skeletal muscle associated fibroblast	Fibroblast	CL:0000057	fibroblast	lexical			matched 'Fibroblast'
+12-Stromal fibroblasts	Stromal fibroblast	Fibroblast	CL:0002255	stromal cell of endometrium	lexical			all words of 'Stromal fibroblasts' found in the term
+14-Stromal fibroblasts	Stromal fibroblast	Fibroblast	CL:0002255	stromal cell of endometrium	lexical			all words of 'Stromal fibroblasts' found in the term
+8-Stromal fibroblasts	Stromal fibroblast	Fibroblast	CL:0002255	stromal cell of endometrium	lexical			all words of 'Stromal fibroblasts' found in the term
+15-Stromal fibroblasts	Stromal fibroblast	Fibroblast	CL:0002255	stromal cell of endometrium	lexical			all words of 'Stromal fibroblasts' found in the term
+23-Stromal fibroblasts	Stromal fibroblast	Fibroblast	CL:0002255	stromal cell of endometrium	lexical			all words of 'Stromal fibroblasts' found in the term
+SynFIB	Synovial fibroblast	Fibroblast			unmapped			
+Villus Fibroblasts WNT5B+	WNT5B+ villus fibroblast	Fibroblast			unmapped			
+WNT5B+ villus fibroblast	WNT5B+ villus fibroblast	Fibroblast			unmapped			
+Chief Cell	Chief cell	Gastric epithelial cell	CL:0000446	chief cell of parathyroid gland	lexical			all words of 'Chief Cell' found in the term
+Fetal Gastric Goblet Cell	Fetal gastric goblet cell	Gastric epithelial cell	CL:1000313	gastric goblet cell	lexical			matched 'Gastric Goblet Cell'
+Fetal Parietal,Chief Cell	Fetal parietal/chief cell	Gastric epithelial cell	CL:0000446	chief cell of parathyroid gland	lexical			all words of 'Chief Cell' found in the term
+Foveolar Cell	Foveolar cell	Gastric epithelial cell	CL:0002179	foveolar cell of stomach	lexical			all words of 'Foveolar Cell' found in the term
+Gastric Neuroendocrine Cell	Gastric neuroendocrine cell	Gastric epithelial cell	CL:0000165	neuroendocrine cell	lexical			matched 'Neuroendocrine Cell'
+Parietal Cell	Parietal cell	Gastric epithelial cell	CL:0000162	parietal cell	direct			
+Fetal Enteric Glia	Fetal enteric glia	Glial cell	CL:4040002	enteroglial cell	lexical			all words of 'Enteric Glia' found in the term
+Glia	Glial cell	Glial cell			unmapped			
+Mueller cell	Müller glial cell	Glial cell	CL:0000636	Mueller cell	direct			
+Baso	Basophil	Granulocyte			unmapped			
+04_Early.Baso	Early basophil	Granulocyte			unmapped			
+Mast Cell	Mast cell	Granulocyte	CL:0000097	mast cell	direct			
+32-Mast cell	Mast cell	Granulocyte	CL:0000097	mast cell	direct			
+mast cell	Mast cell	Granulocyte	CL:0000097	mast cell	direct			
+Mast	Mast cell	Granulocyte	CL:0000097	mast cell	direct			abbreviation matched a CL synonym; check it
+Mast2	Mast cell	Granulocyte			unmapped			
+neutrophil	Neutrophil	Granulocyte	CL:0000775	neutrophil	direct			
+Neutrophil cells	Neutrophil	Granulocyte	CL:0000775	neutrophil	lexical			all words of 'Neutrophil cell' found in the term
+CLP	Common lymphoid progenitor	Hematopoietic progenitor	CL:0000051	common lymphoid progenitor	lexical			abbreviation 'CLP' is ambiguous without an LLM; check it
+CMP	Common myeloid progenitor	Hematopoietic progenitor	CL:0000049	common myeloid progenitor	lexical			abbreviation 'CMP' is ambiguous without an LLM; check it
+GMP	Granulocyte-monocyte progenitor	Hematopoietic progenitor	CL:0000557	granulocyte monocyte progenitor cell	lexical			abbreviation 'GMP' is ambiguous without an LLM; check it
+HSC/MPP	HSC/MPP	Hematopoietic progenitor			unmapped			
+HSPC	HSPC	Hematopoietic progenitor			unmapped			
+HSPC-2	HSPC	Hematopoietic progenitor			unmapped			
+HSP	HSPC	Hematopoietic progenitor			unmapped			
+HSPC-1	HSPC	Hematopoietic progenitor			unmapped			
+LMPP	Lymphoid-primed multipotent progenitor	Hematopoietic progenitor	CL:0000936	early lymphoid progenitor	lexical			abbreviation 'LMPP' is ambiguous without an LLM; check it
+MEP	Megakaryocyte-erythroid progenitor	Hematopoietic progenitor	CL:0000050	megakaryocyte-erythroid progenitor cell	direct			abbreviation matched a CL synonym; check it
+MPP	Multipotent progenitor	Hematopoietic progenitor	CL:0000837	hematopoietic multipotent progenitor cell	direct			abbreviation matched a CL synonym; check it
+15_CLP.2	Common lymphoid progenitor	Hematopoietic stem/progenitor cell	CL:0000051	common lymphoid progenitor	lexical			abbreviation 'CLP' is ambiguous without an LLM; check it
+06_CLP.1	Common lymphoid progenitor	Hematopoietic stem/progenitor cell	CL:0000051	common lymphoid progenitor	lexical			abbreviation 'CLP' is ambiguous without an LLM; check it
+05_CMP.LMPP	Common lymphoid progenitor	Hematopoietic stem/progenitor cell			unmapped			
+Fetal Hematopoeitic Stem Cell	Fetal hematopoietic stem cell	Hematopoietic stem/progenitor cell	CL:0000034	stem cell	lexical			matched 'Stem Cell'
+07_GMP	Granulocyte-monocyte progenitor	Hematopoietic stem/progenitor cell	CL:0000557	granulocyte monocyte progenitor cell	lexical			abbreviation 'GMP' is ambiguous without an LLM; check it
+IMM	Immune cell	Hematopoietic stem/progenitor cell			unmapped			
+08_GMP.Neut	Neutrophil progenitor	Hematopoietic stem/progenitor cell			unmapped			
+Fetal Hepatoblast	Fetal hepatoblast	Hepatocyte	CL:0005026	hepatoblast	lexical			matched 'Hepatoblast'
+Hepatocyte	Hepatocyte	Hepatocyte	CL:0000182	hepatocyte	direct			
+hepatocyte	Hepatocyte	Hepatocyte	CL:0000182	hepatocyte	direct			
+B cell/Mono	B cell/Monocyte	Immune cell			unmapped			
+Hofbauer immune cells	Hofbauer immune cell	Immune cell			unmapped			
+Immune	Immune cell	Immune cell	CL:4042031	immune oligodendroglia	lexical			all words of 'Immune' found in the term
+Immune cells	Immune cell	Immune cell			unmapped			
+immune cell	Immune cell	Immune cell			unmapped			
+BNGA	Basal nucleus GABAergic neuron	Inhibitory neuron			unmapped			
+IN-CGE-Immature	CGE-derived immature inhibitory neuron	Inhibitory neuron			unmapped			
+CBINH	Cerebellar inhibitory neuron	Inhibitory neuron			unmapped			
+D1CaB	D1 calbindin-expressing neuron	Inhibitory neuron			unmapped			
+D1Pu	D1 putamen neuron	Inhibitory neuron			unmapped			
+D12NAC	D1/D2 nucleus accumbens neuron	Inhibitory neuron			unmapped			
+D2CaB	D2 calbindin-expressing neuron	Inhibitory neuron			unmapped			
+D2Pu	D2 putamen neuron	Inhibitory neuron			unmapped			
+Fetal Inhibitory Neuron 1	Fetal inhibitory neuron	Inhibitory neuron	CL:0008015	inhibitory motor neuron	lexical			all words of 'Inhibitory Neuron' found in the term
+Fetal Inhibitory Neuron 5	Fetal inhibitory neuron	Inhibitory neuron	CL:0008015	inhibitory motor neuron	lexical			all words of 'Inhibitory Neuron' found in the term
+Fetal Inhibitory Neuron 3	Fetal inhibitory neuron	Inhibitory neuron	CL:0008015	inhibitory motor neuron	lexical			all words of 'Inhibitory Neuron' found in the term
+Fetal Inhibitory Neuron 2	Fetal inhibitory neuron	Inhibitory neuron	CL:0008015	inhibitory motor neuron	lexical			all words of 'Inhibitory Neuron' found in the term
+Fetal Inhibitory Neuron 4	Fetal inhibitory neuron	Inhibitory neuron	CL:0008015	inhibitory motor neuron	lexical			all words of 'Inhibitory Neuron' found in the term
+GABAergic Neuron 1	GABAergic neuron	Inhibitory neuron	CL:0000617	GABAergic neuron	direct			
+GABAergic Neuron 2	GABAergic neuron	Inhibitory neuron	CL:0000617	GABAergic neuron	direct			
+ICGA_1	Inferior colliculus GABAergic neuron	Inhibitory neuron			unmapped			
+ICGA_2	Inferior colliculus GABAergic neuron	Inhibitory neuron			unmapped			
+INH	Inhibitory neuron	Inhibitory neuron			unmapped			
+LAMP5	LAMP5 inhibitory neuron	Inhibitory neuron	CL:4310084	LAMP5-CXCL14 GABA lamp5 GABAergic interneuron (Primate)	direct			
+IN-Mix-LAMP5	LAMP5 inhibitory neuron	Inhibitory neuron			unmapped			
+LAMP5_LHX6	LAMP5-LHX6 inhibitory neuron	Inhibitory neuron	CL:4042013	Lamp5 Lhx6 neuron	lexical			all words of 'LAMP5 LHX6' found in the term
+IN-MGE-Immature	MGE-derived immature inhibitory neuron	Inhibitory neuron			unmapped			
+MDGA	Medial ganglionic GABAergic neuron	Inhibitory neuron			unmapped			
+MSN_3	Medium spiny neuron	Inhibitory neuron	CL:4310058	STR D1 MSN direct pathway medium spiny neuron (Primate)	lexical			abbreviation 'MSN' is ambiguous without an LLM; check it
+MSN_2	Medium spiny neuron	Inhibitory neuron	CL:4310058	STR D1 MSN direct pathway medium spiny neuron (Primate)	lexical			abbreviation 'MSN' is ambiguous without an LLM; check it
+MSN_1	Medium spiny neuron	Inhibitory neuron	CL:4310058	STR D1 MSN direct pathway medium spiny neuron (Primate)	lexical			abbreviation 'MSN' is ambiguous without an LLM; check it
+IN-MGE-PV	PV inhibitory neuron	Inhibitory neuron			unmapped			
+PVALB_3	PVALB inhibitory neuron	Inhibitory neuron	CL:4310120	STR FS PTHLH-PVALB GABA striatal pthlh-expressing interneuron (Primate)	lexical			all words of 'PVALB' found in the term
+PVALB_1	PVALB inhibitory neuron	Inhibitory neuron	CL:4310120	STR FS PTHLH-PVALB GABA striatal pthlh-expressing interneuron (Primate)	lexical			all words of 'PVALB' found in the term
+PVALB_4	PVALB inhibitory neuron	Inhibitory neuron	CL:4310120	STR FS PTHLH-PVALB GABA striatal pthlh-expressing interneuron (Primate)	lexical			all words of 'PVALB' found in the term
+PVALB_2	PVALB inhibitory neuron	Inhibitory neuron	CL:4310120	STR FS PTHLH-PVALB GABA striatal pthlh-expressing interneuron (Primate)	lexical			all words of 'PVALB' found in the term
+PV_ChCs	Parvalbumin+ chandelier cell	Inhibitory neuron			unmapped			
+SNCG_3	SNCG inhibitory neuron	Inhibitory neuron	CL:4023015	sncg GABAergic interneuron	lexical			abbreviation 'SNCG' is ambiguous without an LLM; check it
+SNCG_5	SNCG inhibitory neuron	Inhibitory neuron	CL:4023015	sncg GABAergic interneuron	lexical			abbreviation 'SNCG' is ambiguous without an LLM; check it
+SNCG_1	SNCG inhibitory neuron	Inhibitory neuron	CL:4023015	sncg GABAergic interneuron	lexical			abbreviation 'SNCG' is ambiguous without an LLM; check it
+SNCG_2	SNCG inhibitory neuron	Inhibitory neuron	CL:4023015	sncg GABAergic interneuron	lexical			abbreviation 'SNCG' is ambiguous without an LLM; check it
+SNCG_4	SNCG inhibitory neuron	Inhibitory neuron	CL:4023015	sncg GABAergic interneuron	lexical			abbreviation 'SNCG' is ambiguous without an LLM; check it
+IN-CGE-SNCG	SNCG inhibitory neuron	Inhibitory neuron			unmapped			
+SST_1	SST inhibitory neuron	Inhibitory neuron	CL:4023017	sst GABAergic interneuron	lexical			abbreviation 'SST' is ambiguous without an LLM; check it
+SST_4	SST inhibitory neuron	Inhibitory neuron	CL:4023017	sst GABAergic interneuron	lexical			abbreviation 'SST' is ambiguous without an LLM; check it
+SST_5	SST inhibitory neuron	Inhibitory neuron	CL:4023017	sst GABAergic interneuron	lexical			abbreviation 'SST' is ambiguous without an LLM; check it
+SST_2	SST inhibitory neuron	Inhibitory neuron	CL:4023017	sst GABAergic interneuron	lexical			abbreviation 'SST' is ambiguous without an LLM; check it
+SST_3	SST inhibitory neuron	Inhibitory neuron	CL:4023017	sst GABAergic interneuron	lexical			abbreviation 'SST' is ambiguous without an LLM; check it
+IN-MGE-SST	SST inhibitory neuron	Inhibitory neuron			unmapped			
+SST_CHODL	SST-CHODL inhibitory neuron	Inhibitory neuron	CL:4310123	STR SST-CHODL GABA sst chodl GABAergic interneuron (Primate)	direct			
+SEPGA	Septal GABAergic neuron	Inhibitory neuron			unmapped			
+THMGA_2	Thalamic GABAergic neuron	Inhibitory neuron			unmapped			
+THMGA_1	Thalamic GABAergic neuron	Inhibitory neuron			unmapped			
+VIP_6	VIP inhibitory neuron	Inhibitory neuron	CL:4310127	VIP GABA VIP GABAergic interneuron (Primate)	direct			abbreviation matched a CL synonym; check it
+VIP_1	VIP inhibitory neuron	Inhibitory neuron	CL:4310127	VIP GABA VIP GABAergic interneuron (Primate)	direct			abbreviation matched a CL synonym; check it
+VIP_5	VIP inhibitory neuron	Inhibitory neuron	CL:4310127	VIP GABA VIP GABAergic interneuron (Primate)	direct			abbreviation matched a CL synonym; check it
+VIP_3	VIP inhibitory neuron	Inhibitory neuron	CL:4310127	VIP GABA VIP GABAergic interneuron (Primate)	direct			abbreviation matched a CL synonym; check it
+VIP_7	VIP inhibitory neuron	Inhibitory neuron	CL:4310127	VIP GABA VIP GABAergic interneuron (Primate)	direct			abbreviation matched a CL synonym; check it
+VIP_4	VIP inhibitory neuron	Inhibitory neuron	CL:4310127	VIP GABA VIP GABAergic interneuron (Primate)	direct			abbreviation matched a CL synonym; check it
+VIP_2	VIP inhibitory neuron	Inhibitory neuron	CL:4310127	VIP GABA VIP GABAergic interneuron (Primate)	direct			abbreviation matched a CL synonym; check it
+IN-CGE-VIP	VIP inhibitory neuron	Inhibitory neuron			unmapped			
+IN-dLGE-Immature	dLGE-derived immature inhibitory neuron	Inhibitory neuron			unmapped			
+ILCs	Innate lymphoid cell	Lymphocyte	CL:0001082	immature innate lymphoid cell	lexical			abbreviation 'ILCs' is ambiguous without an LLM; check it
+innate lymphoid cell	Innate lymphoid cell	Lymphocyte	CL:0001065	innate lymphoid cell	direct			
+lymphatic cell	Lymphocyte	Lymphocyte	CL:0002138	endothelial cell of lymphatic vessel	lexical			all words of 'lymphatic cell' found in the term
+4-Lymphocytes	Lymphocyte	Lymphocyte	CL:0000542	lymphocyte	direct			
+lymphocyte	Lymphocyte	Lymphocyte	CL:0000542	lymphocyte	direct			
+Lymphoid	Lymphocyte	Lymphocyte	CL:0000051	common lymphoid progenitor	lexical			all words of 'Lymphoid' found in the term
+Lymphoid_Like	Lymphocyte	Lymphocyte	CL:0000051	common lymphoid progenitor	lexical			all words of 'Lymphoid' found in the term
+Macrophage (General,Alveolar)	Alveolar macrophage	Macrophage	CL:0000583	alveolar macrophage	lexical			matched 'Alveolar Macrophage'
+Fetal Hepatic Macrophage 1	Fetal hepatic macrophage	Macrophage	CL:0000091	Kupffer cell	lexical			matched 'Hepatic Macrophage'
+Fetal Hepatic Macrophage 2	Fetal hepatic macrophage	Macrophage	CL:0000091	Kupffer cell	lexical			matched 'Hepatic Macrophage'
+Fetal Hepatic Macrophage 3	Fetal hepatic macrophage	Macrophage	CL:0000091	Kupffer cell	lexical			matched 'Hepatic Macrophage'
+Fetal Macrophage(General) 2	Fetal macrophage	Macrophage	CL:0000235	macrophage	lexical			matched 'Macrophage'
+Fetal Macrophage (General) 3	Fetal macrophage	Macrophage	CL:0000235	macrophage	lexical			matched 'Macrophage'
+Fetal Macrophage (General) 1	Fetal macrophage	Macrophage	CL:0000235	macrophage	lexical			matched 'Macrophage'
+Fetal Macrophage (General) 4	Fetal macrophage	Macrophage	CL:0000235	macrophage	lexical			matched 'Macrophage'
+Fetal Placental Macrophage	Fetal placental macrophage	Macrophage	CL:4033087	placental resident macrophage	lexical			all words of 'Placental Macrophage' found in the term
+M1.macs	M1 macrophage	Macrophage			unmapped			
+M2.macs_3	M2 Macrophage	Macrophage			unmapped			
+M2.macs_1	M2 Macrophage	Macrophage			unmapped			
+M2.macs_2	M2 Macrophage	Macrophage			unmapped			
+Macrophage (General)	Macrophage	Macrophage	CL:0000235	macrophage	lexical			matched 'Macrophage'
+macrophage	Macrophage	Macrophage	CL:0000235	macrophage	direct			
+13-Macrophages	Macrophage	Macrophage	CL:0000235	macrophage	direct			
+5-Macrophage	Macrophage	Macrophage	CL:0000235	macrophage	direct			
+Macrophage	Macrophage	Macrophage	CL:0000235	macrophage	direct			
+Macrophages	Macrophage	Macrophage	CL:0000235	macrophage	direct			
+Melanocytes	Melanocyte	Melanocyte	CL:0000148	melanocyte	direct			
+Melanocyte	Melanocyte	Melanocyte	CL:0000148	melanocyte	direct			
+Arachnoid	Arachnoid cell	Meningeal cell	CL:4023097	arachnoid barrier cell	lexical			all words of 'Arachnoid' found in the term
+D.Sheath	Dural sheath cell	Meningeal cell	CL:0000618	sheath cell	lexical			matched 'Sheath'
+Meningeal Dura	Meningeal dura cell	Meningeal cell			unmapped			
+Periosteal Dura	Periosteal dura cell	Meningeal cell			unmapped			
+Perisuture	Perisuture cell	Meningeal cell			unmapped			
+Fetal Mesangial Cell 1	Fetal mesangial cell	Mesangial cell	CL:0000650	mesangial cell	lexical			matched 'Mesangial Cell'
+Fetal Mesangial Cell 2	Fetal mesangial cell	Mesangial cell	CL:0000650	mesangial cell	lexical			matched 'Mesangial Cell'
+CranialMes	Cranial mesenchymal cell	Mesenchymal cell			unmapped			
+FacialMes	Facial mesenchymal cell	Mesenchymal cell			unmapped			
+HIC1+Mes	HIC1+ mesenchymal cell	Mesenchymal cell			unmapped			
+LEPR+Mes	LEPR+ mesenchymal cell	Mesenchymal cell			unmapped			
+LimbMes	Limb mesenchymal cell	Mesenchymal cell			unmapped			
+PArchMes	Pharyngeal arch mesenchymal cell	Mesenchymal cell			unmapped			
+SutureMes2	Suture mesenchymal	Mesenchymal cell			unmapped			
+SutureMes1	Suture mesenchymal	Mesenchymal cell			unmapped			
+MG	Microglia	Microglia			unmapped			
+Microglia	Microglia	Microglia	CL:0000129	microglial cell	lexical			all words of 'Microglia' found in the term
+microglial cell	Microglia	Microglia	CL:0000129	microglial cell	direct			
+microglia	Microglia	Microglia	CL:0000129	microglial cell	lexical			all words of 'Microglia' found in the term
+MGC_1	Microglia	Microglia	CL:0000647	multinucleated giant cell	lexical			abbreviation 'MGC' is ambiguous without an LLM; check it
+MGC_2	Microglia	Microglia	CL:0000647	multinucleated giant cell	lexical			abbreviation 'MGC' is ambiguous without an LLM; check it
+CD14 Mono	CD14 monocyte	Monocyte			unmapped			
+11_CD14.Mono.1	CD14 monocyte	Monocyte			unmapped			
+12_CD14.Mono.2	CD14 monocyte	Monocyte			unmapped			
+CD16 Mono	CD16 monocyte	Monocyte			unmapped			
+Monocyte	Monocyte	Monocyte	CL:0000576	monocyte	direct			
+Mono	Monocyte	Monocyte			unmapped			
+monocyte	Monocyte	Monocyte	CL:0000576	monocyte	direct			
+Myeloid	Myeloid cell	Myeloid cell	CL:0000763	myeloid cell	direct			
+myeloid cell	Myeloid cell	Myeloid cell	CL:0000763	myeloid cell	direct			
+Myeloid cells	Myeloid cell	Myeloid cell	CL:0000763	myeloid cell	direct			
+Myloid cells	Myeloid cell	Myeloid cell			unmapped			
+Myeloid_Like	Myeloid cell	Myeloid cell	CL:0000763	myeloid cell	direct			
+NK Proliferating	Cycling NK cell	NK cell	CL:0000623	natural killer cell	lexical			matched 'NK'
+Natural Killer T Cell	NK T cell	NK cell	CL:0000084	T cell	lexical			matched 'T Cell'
+NK/T	NK T cell	NK cell	CL:0000814	mature NK T cell	lexical			abbreviation 'NK/T' is ambiguous without an LLM; check it
+NK	NK cell	NK cell	CL:0000623	natural killer cell	direct			abbreviation matched a CL synonym; check it
+25_NK	NK cell	NK cell	CL:0000623	natural killer cell	direct			abbreviation matched a CL synonym; check it
+natural killer cell	NK cell	NK cell	CL:0000623	natural killer cell	direct			
+IPC-EN	Excitatory intermediate progenitor	Neural progenitor			unmapped			
+IPC-Glia	Glial intermediate progenitor	Neural progenitor			unmapped			
+NP_1	Neural progenitor	Neural progenitor			unmapped			
+NP_3	Neural progenitor	Neural progenitor			unmapped			
+NP_2	Neural progenitor	Neural progenitor			unmapped			
+RG-oRG	RG-oRG	Neural progenitor			unmapped			
+RG-tRG	RG-tRG	Neural progenitor			unmapped			
+RG-vRG	RG-vRG	Neural progenitor			unmapped			
+ACBGM	Accessory basal ganglia neuron	Neuron			unmapped			
+AMY	Amygdala neuron	Neuron	CL:4310146	AMY-SLEA-BNST GABA GABAergic interneuron (Primate)	lexical			abbreviation 'AMY' is ambiguous without an LLM; check it
+CNMIX	Cerebellar nucleus mixed neuron	Neuron			unmapped			
+CTXMIX	Cortical mixed neuron	Neuron			unmapped			
+CT_1	Cortical neuron	Neuron	CL:4023055	corticothalamic VAL/VM projecting glutamatergic neuron of the primary motor cortex	lexical			abbreviation 'CT' is ambiguous without an LLM; check it
+CT_2	Cortical neuron	Neuron	CL:4023055	corticothalamic VAL/VM projecting glutamatergic neuron of the primary motor cortex	lexical			abbreviation 'CT' is ambiguous without an LLM; check it
+CNS,Enteric Neuron	Enteric neuron	Neuron	CL:0007011	enteric neuron	lexical			matched 'Enteric Neuron'
+ERC_1	Entorhinal cortex neuron	Neuron			unmapped			
+ERC_2	Entorhinal cortex neuron	Neuron			unmapped			
+FOXP2_1	FOXP2 expressing neuron	Neuron			unmapped			
+FOXP2_2	FOXP2 expressing neuron	Neuron			unmapped			
+FOXP2_3	FOXP2 expressing neuron	Neuron			unmapped			
+FOXP2_4	FOXP2 expressing neuron	Neuron			unmapped			
+Fetal Adrenal Neuron	Fetal adrenal neuron	Neuron	CL:0000540	neuron	lexical			matched 'Neuron'
+Fetal Enteric Neuron	Fetal enteric neuron	Neuron	CL:0007011	enteric neuron	lexical			matched 'Enteric Neuron'
+Fetal Placental Neuron	Fetal placental neuron	Neuron	CL:0000540	neuron	lexical			matched 'Neuron'
+GC	Granule cell	Neuron	CL:0000844	germinal center B cell	lexical			abbreviation 'GC' is ambiguous without an LLM; check it
+nerve cell	Nerve cell	Neuron	CL:0000540	neuron	direct			
+neural cell	Neural cell	Neuron	CL:0002319	neural cell	direct			
+neuronal	Neuron	Neuron			unmapped			
+Neural	Neuronal	Neuron	CL:0002319	neural cell	direct			
+Neuronal	Neuronal	Neuron			unmapped			
+neuronal cell	Neuronal cell	Neuron	CL:0000006	neuronal receptor cell	lexical			all words of 'neuronal cell' found in the term
+N1	Neuronal cell type	Neuron			unmapped			
+N2	Neuronal cell type	Neuron			unmapped			
+PIR	Piriform cortex neuron	Neuron			unmapped			
+PKJ_2	Purkinje cell	Neuron			unmapped			
+PKJ_1	Purkinje cell	Neuron			unmapped			
+SUB	Subicular neuron	Neuron			unmapped			
+Fetal Oligodendrocyte Progenitor 2	Fetal oligodendrocyte precursor cell	Oligodendrocyte	CL:0011026	progenitor cell	lexical			matched 'Progenitor'
+Oligodendrocyte-Immature	Immature oligodendrocyte	Oligodendrocyte			unmapped			
+Oligodendrocyte	Oligodendrocyte	Oligodendrocyte	CL:0000128	oligodendrocyte	direct			
+ODC	Oligodendrocyte	Oligodendrocyte			unmapped			
+OGC_2	Oligodendrocyte	Oligodendrocyte			unmapped			
+OGC_3	Oligodendrocyte	Oligodendrocyte			unmapped			
+OGC_1	Oligodendrocyte	Oligodendrocyte			unmapped			
+oligodendrocytes	Oligodendrocyte	Oligodendrocyte	CL:0000128	oligodendrocyte	direct			
+OPC	Oligodendrocyte precursor cell	Oligodendrocyte	CL:4300031	OPC-Oligo cell (Mmus)	lexical			abbreviation 'OPC' is ambiguous without an LLM; check it
+Oligodendrocyte Precursor	Oligodendrocyte precursor cell	Oligodendrocyte	CL:0002453	oligodendrocyte precursor cell	direct			
+COP	Oligodendrocyte precursor cell	Oligodendrocyte	CL:4023059	committed oligodendrocyte precursor	direct			abbreviation matched a CL synonym; check it
+HHIP+PreOB	HHIP+ preosteoblast	Osteoblast			unmapped			
+MatureOsteocyte	Mature osteocyte	Osteoblast	CL:0000137	osteocyte	lexical			matched 'Osteocyte'
+Osteoblast	Osteoblast	Osteoblast	CL:0000062	osteoblast	direct			
+Osteocyte	Osteocyte	Osteoblast	CL:0000137	osteocyte	direct			
+Preosteoblast	Preosteoblast	Osteoblast	CL:0007010	preosteoblast	direct			
+Luteal Cell (Ovarian)	Ovarian luteal cell	Ovarian cell	CL:0000175	luteal cell	lexical			matched 'Luteal Cell'
+Fetal Pancreatic Islet Cell	Fetal pancreatic islet cell	Pancreatic endocrine cell	CL:0000169	type B pancreatic cell	lexical			all words of 'Pancreatic Islet Cell' found in the term
+Gamma	Pancreatic PP cell	Pancreatic endocrine cell	CL:0000798	gamma-delta T cell	lexical			all words of 'Gamma' found in the term
+gamma cell	Pancreatic PP cell	Pancreatic endocrine cell	CL:0000798	gamma-delta T cell	lexical			all words of 'gamma cell' found in the term
+Alpha	Pancreatic alpha cell	Pancreatic endocrine cell	CL:0004117	alpha retinal ganglion cell (Mmus)	direct			
+Pancreatic Alpha Cell 1	Pancreatic alpha cell	Pancreatic endocrine cell	CL:0000171	pancreatic A cell	direct			
+Pancreatic Alpha Cell 2	Pancreatic alpha cell	Pancreatic endocrine cell	CL:0000171	pancreatic A cell	direct			
+Beta	Pancreatic beta cell	Pancreatic endocrine cell	CL:0000790	immature alpha-beta T cell	lexical			abbreviation 'Beta' is ambiguous without an LLM; check it
+Pancreatic Beta Cell 1	Pancreatic beta cell	Pancreatic endocrine cell	CL:0000169	type B pancreatic cell	direct			
+Pancreatic Beta Cell 2	Pancreatic beta cell	Pancreatic endocrine cell	CL:0000169	type B pancreatic cell	direct			
+beta cell	Pancreatic beta cell	Pancreatic endocrine cell	CL:0000169	type B pancreatic cell	lexical			all words of 'beta cell' found in the term
+pancreatic cell	Pancreatic cell	Pancreatic endocrine cell	CL:0000169	type B pancreatic cell	lexical			all words of 'pancreatic cell' found in the term
+Delta	Pancreatic delta cell	Pancreatic endocrine cell	CL:0000798	gamma-delta T cell	lexical			all words of 'Delta' found in the term
+alpha cell, gamma cell, epsilon cell	Pancreatic endocrine cell	Pancreatic endocrine cell			unmapped			
+Fetal Pancreatic Acinar Cell 2	Fetal pancreatic acinar cell	Pancreatic exocrine cell	CL:0002064	pancreatic acinar cell	lexical			matched 'Pancreatic Acinar Cell'
+Fetal Pancreatic Acinar Cell 1	Fetal pancreatic acinar cell	Pancreatic exocrine cell	CL:0002064	pancreatic acinar cell	lexical			matched 'Pancreatic Acinar Cell'
+Pancreatic Acinar Cell	Pancreatic acinar cell	Pancreatic exocrine cell	CL:0002064	pancreatic acinar cell	direct			
+Acinar	Pancreatic acinar cell	Pancreatic exocrine cell	CL:0000622	acinar cell	direct			
+pancreatic acinar cell	Pancreatic acinar cell	Pancreatic exocrine cell	CL:0002064	pancreatic acinar cell	direct			
+Cardiac Pericyte 1	Cardiac pericyte	Pericyte	CL:0000669	pericyte	lexical			matched 'Pericyte'
+Cardiac Pericyte 2	Cardiac pericyte	Pericyte	CL:0000669	pericyte	lexical			matched 'Pericyte'
+Cardiac Pericyte 3	Cardiac pericyte	Pericyte	CL:0000669	pericyte	lexical			matched 'Pericyte'
+Cardiac Pericyte 4	Cardiac pericyte	Pericyte	CL:0000669	pericyte	lexical			matched 'Pericyte'
+Pericyte (Esophageal Muscularis)	Esophageal muscularis pericyte	Pericyte	CL:0000669	pericyte	lexical			matched 'Pericyte'
+Pericyte (General) 1	Pericyte	Pericyte	CL:0000669	pericyte	lexical			matched 'Pericyte'
+Pericyte (General) 2	Pericyte	Pericyte	CL:0000669	pericyte	lexical			matched 'Pericyte'
+Pericyte (General) 3	Pericyte	Pericyte	CL:0000669	pericyte	lexical			matched 'Pericyte'
+Pericyte (General) 4	Pericyte	Pericyte	CL:0000669	pericyte	lexical			matched 'Pericyte'
+pericyte	Pericyte	Pericyte	CL:0000669	pericyte	direct			
+PERI	Pericyte	Pericyte			unmapped			
+Pericyte	Pericyte	Pericyte	CL:0000669	pericyte	direct			
+Pericytes	Pericyte	Pericyte	CL:0000669	pericyte	direct			
+perivascular cell	Perivascular cell	Pericyte	CL:4033054	perivascular cell	direct			
+VSM/P	Vascular smooth muscle/Pericyte	Pericyte			unmapped			
+Fetal Extravillous Trophoblast	Fetal extravillous trophoblast	Placental cell	CL:0008036	extravillous trophoblast	lexical			matched 'Extravillous Trophoblast'
+Fetal Syncitiotrophoblast,Cytotrophoblast,Trophoblast Giant	Fetal trophoblast	Placental cell	CL:0002488	trophoblast giant cell	lexical			matched 'Trophoblast Giant'
+placental villous trophoblast	Placental villous trophoblast	Placental cell	CL:2000060	placental villous trophoblast	direct			
+syncytiotrophoblast cell	Syncytiotrophoblast	Placental cell	CL:0000525	syncytiotrophoblast cell	direct			
+retinal cone cell	Cone cell	Retinal cell	CL:0000573	retinal cone cell	direct			
+retina horizontal cell	Horizontal cell	Retinal cell	CL:0000745	retina horizontal cell	direct			
+retinal ganglion cell	Retinal ganglion cell	Retinal cell	CL:0000740	retinal ganglion cell	direct			
+retinal rod cell	Rod cell	Retinal cell	CL:0000604	retinal rod cell	direct			
+Fetal Schwann Cell	Fetal Schwann cell	Schwann cell	CL:0002573	Schwann cell	lexical			matched 'Schwann Cell'
+Schwann Cell (General)	Schwann cell	Schwann cell	CL:0002573	Schwann cell	lexical			matched 'Schwann Cell'
+Schwann cell	Schwann cell	Schwann cell	CL:0002573	Schwann cell	direct			
+Schwann	Schwann cell	Schwann cell	CL:0002573	Schwann cell	direct			
+Fetal Satellite Cell 1	Fetal satellite cell	Skeletal muscle cell	CL:0000516	perineuronal satellite cell	lexical			all words of 'Satellite Cell' found in the term
+Fetal Satellite Cell 2	Fetal satellite cell	Skeletal muscle cell	CL:0000516	perineuronal satellite cell	lexical			all words of 'Satellite Cell' found in the term
+Fetal Skeletal Myocyte 1	Fetal skeletal myocyte	Skeletal muscle cell	CL:0000187	muscle cell	lexical			matched 'Myocyte'
+Fetal Skeletal Myocyte 2	Fetal skeletal myocyte	Skeletal muscle cell	CL:0000187	muscle cell	lexical			matched 'Myocyte'
+Fetal Skeletal Myocyte 3	Fetal skeletal myocyte	Skeletal muscle cell	CL:0000187	muscle cell	lexical			matched 'Myocyte'
+MYH3+ Myo	MYH3+ myocyte	Skeletal muscle cell			unmapped			
+muscle satellite cell	Muscle satellite cell	Skeletal muscle cell	CL:0000594	skeletal muscle satellite cell	lexical			all words of 'muscle satellite cell' found in the term
+PAX7+ Myo	PAX7+ myocyte	Skeletal muscle cell			unmapped			
+Satellite Cell	Satellite cell	Skeletal muscle cell	CL:0000516	perineuronal satellite cell	lexical			all words of 'Satellite Cell' found in the term
+type 1 muscle cell	Type I muscle cell	Skeletal muscle cell	CL:0002211	type I muscle cell	direct			
+Type I Skeletal Myocyte	Type I skeletal myocyte	Skeletal muscle cell			unmapped			
+type 2 muscle cell	Type II muscle cell	Skeletal muscle cell	CL:0002212	type II muscle cell	direct			
+Type II Skeletal Myocyte	Type II skeletal myocyte	Skeletal muscle cell			unmapped			
+airway smooth muscle cell	Airway smooth muscle cell	Smooth muscle cell	CL:0000192	smooth muscle cell	lexical			matched 'smooth muscle cell'
+Smooth Muscle (Colon) 1	Colonic smooth muscle cell	Smooth muscle cell	CL:1000280	smooth muscle cell of colon	lexical			all words of 'Smooth Muscle Colon' found in the term
+Smooth Muscle (Colon) 2	Colonic smooth muscle cell	Smooth muscle cell	CL:1000280	smooth muscle cell of colon	lexical			all words of 'Smooth Muscle Colon' found in the term
+Smooth Muscle (Esophageal Mucosal)	Esophageal mucosal smooth muscle cell	Smooth muscle cell	CL:0000192	smooth muscle cell	lexical			matched 'Smooth Muscle'
+Smooth Muscle (Esophageal Muscularis) 2	Esophageal muscularis smooth muscle cell	Smooth muscle cell	CL:0000192	smooth muscle cell	lexical			matched 'Smooth Muscle'
+Smooth Muscle (Esophageal Muscularis) 1	Esophageal muscularis smooth muscle cell	Smooth muscle cell	CL:0000192	smooth muscle cell	lexical			matched 'Smooth Muscle'
+Smooth Muscle (Esophageal Muscularis) 3	Esophageal muscularis smooth muscle cell	Smooth muscle cell	CL:0000192	smooth muscle cell	lexical			matched 'Smooth Muscle'
+Smooth Muscle (GE Junction)	Gastroesophageal junction smooth muscle cell	Smooth muscle cell	CL:0000192	smooth muscle cell	lexical			matched 'Smooth Muscle'
+Smooth Muscle (General Gastrointestinal)	Gastrointestinal smooth muscle cell	Smooth muscle cell	CL:0000192	smooth muscle cell	lexical			matched 'Smooth Muscle'
+Smooth Muscle (General)	Smooth muscle cell	Smooth muscle cell	CL:0000192	smooth muscle cell	lexical			matched 'Smooth Muscle'
+interstitial cell of cajal	Interstitial cell of Cajal	Smooth muscle cell	CL:0002088	interstitial cell of Cajal	direct			
+Muscle	Muscle cell	Smooth muscle cell	CL:0000187	muscle cell	direct			
+muscle cell	Muscle cell	Smooth muscle cell	CL:0000187	muscle cell	direct			
+Myofibroblasts/Smooth Muscle 1	Myofibroblast/smooth muscle cell	Smooth muscle cell	CL:0000187	muscle cell	lexical			matched 'Muscle'
+Myofibroblasts/Smooth Muscle 2	Myofibroblast/smooth muscle cell	Smooth muscle cell	CL:0000187	muscle cell	lexical			matched 'Muscle'
+Myofibroblasts/Smooth Muscle 3	Myofibroblast/smooth muscle cell	Smooth muscle cell	CL:0000187	muscle cell	lexical			matched 'Muscle'
+7-Smooth muscle cells	Smooth muscle cell	Smooth muscle cell	CL:0000192	smooth muscle cell	direct			
+SMC	Smooth muscle cell	Smooth muscle cell	CL:0000192	smooth muscle cell	direct			abbreviation matched a CL synonym; check it
+smooth muscle cell	Smooth muscle cell	Smooth muscle cell	CL:0000192	smooth muscle cell	direct			
+Sm. Mus.	Smooth muscle cell	Smooth muscle cell			unmapped			
+Smooth Muscle (Uterine)	Uterine smooth muscle cell	Smooth muscle cell	CL:0002601	uterine smooth muscle cell	direct			
+Smooth Muscle (Vaginal)	Vaginal smooth muscle cell	Smooth muscle cell	CL:0000192	smooth muscle cell	lexical			matched 'Smooth Muscle'
+Vascular Smooth Muscle 2	Vascular smooth muscle cell	Smooth muscle cell	CL:0000359	vascular associated smooth muscle cell	direct			
+Vascular Smooth Muscle 1	Vascular smooth muscle cell	Smooth muscle cell	CL:0000359	vascular associated smooth muscle cell	direct			
+vSMCs	Vascular smooth muscle cell	Smooth muscle cell	CL:0000359	vascular associated smooth muscle cell	direct			
+vascular smooth muscle cell	Vascular smooth muscle cell	Smooth muscle cell	CL:0000359	vascular associated smooth muscle cell	direct			
+Fetal Hepatic Stellate Cell	Fetal hepatic stellate cell	Stellate cell	CL:0000632	hepatic stellate cell	lexical			matched 'Hepatic Stellate Cell'
+Stellate	Stellate cell	Stellate cell	CL:0000122	stellate neuron	lexical			all words of 'Stellate' found in the term
+stellate cell	Stellate cell	Stellate cell	CL:0020067	entorhinal cortex layer II stellate cell	lexical			all words of 'stellate cell' found in the term
+01_HSC	Hematopoietic stem cell	Stem cell	CL:0000037	hematopoietic stem cell	lexical			abbreviation 'HSC' is ambiguous without an LLM; check it
+Stem	Stem cell	Stem cell	CL:0000034	stem cell	direct			abbreviation matched a CL synonym; check it
+ovarian stromal cell	Ovarian stromal cell	Stromal cell	CL:0002132	stromal cell of ovary	direct			
+Peripheral Nerve Stromal	Peripheral nerve stromal cell	Stromal cell	CL:0000499	stromal cell	lexical			matched 'Stromal'
+uterine stromal cell	Uterine stromal cell	Stromal cell	CL:0000499	stromal cell	lexical			matched 'stromal cell'
+T lymphocyte 2 (CD4+)	CD4 T cell	T cell	CL:0000492	CD4-positive helper T cell	lexical			all words of 'CD4+ T lymphocyte' found in the term
+CD4.Tc_2	CD4 T cell	T cell			unmapped			
+CD4.Tc_1	CD4 T cell	T cell			unmapped			
+CD4.Tc_3	CD4 T cell	T cell			unmapped			
+CD4	CD4 T cell	T cell	CL:0000810	CD4-positive, alpha-beta thymocyte	lexical			abbreviation 'CD4' is ambiguous without an LLM; check it
+CD4+ 3	CD4 T cell	T cell	CL:0000810	CD4-positive, alpha-beta thymocyte	lexical			abbreviation 'CD4+' is ambiguous without an LLM; check it
+CD4+	CD4 T cell	T cell	CL:0000810	CD4-positive, alpha-beta thymocyte	lexical			abbreviation 'CD4+' is ambiguous without an LLM; check it
+CD4+ 2	CD4 T cell	T cell	CL:0000810	CD4-positive, alpha-beta thymocyte	lexical			abbreviation 'CD4+' is ambiguous without an LLM; check it
+22_CD4.M	CD4 memory T cell	T cell			unmapped			
+20_CD4.N1	CD4 naive T cell	T cell			unmapped			
+21_CD4.N2	CD4 naive T cell	T cell			unmapped			
+T Lymphocyte 1 (CD8+)	CD8 T cell	T cell	CL:0000920	CD8-positive, CD28-negative, alpha-beta regulatory T cell	lexical			all words of 'CD8+ T Lymphocyte' found in the term
+CD8.Tc	CD8 T cell	T cell			unmapped			
+CD8	CD8 T cell	T cell	CL:0000811	CD8-positive, alpha-beta thymocyte	lexical			abbreviation 'CD8' is ambiguous without an LLM; check it
+CD8+	CD8 T cell	T cell	CL:0000811	CD8-positive, alpha-beta thymocyte	lexical			abbreviation 'CD8+' is ambiguous without an LLM; check it
+CD8 T	CD8 T cell	T cell	CL:0000920	CD8-positive, CD28-negative, alpha-beta regulatory T cell	lexical			all words of 'CD8 T' found in the term
+24_CD8.CM	CD8 central memory T cell	T cell			unmapped			
+19_CD8.N	CD8 naive T cell	T cell			unmapped			
+CD4 TCM	Central memory CD4 T cell	T cell			unmapped			
+CD8 TCM	Central memory CD8 T cell	T cell			unmapped			
+CD8 TEM	Effector CD8 T cell	T cell			unmapped			
+23_CD8.EM	Effector memory CD8 T cell	T cell			unmapped			
+Exhausted T cells	Exhausted T cell	T cell	CL:0011025	exhausted T cell	direct			
+Fetal T Lymphocyte 1 (CD4+)	Fetal CD4+ T cell	T cell	CL:0000492	CD4-positive helper T cell	lexical			all words of 'CD4+ T Lymphocyte' found in the term
+Fetal T Lymphocyte 4 (FASLG+)	Fetal FASLG+ T cell	T cell	CL:0000084	T cell	lexical			matched 'T Lymphocyte'
+Fetal T Lymphocyte 3 (IL2+)	Fetal IL2+ T cell	T cell	CL:0000084	T cell	lexical			matched 'T Lymphocyte'
+Fetal T Lymphocyte 2 (Cytotoxic)	Fetal cytotoxic T cell	T cell	CL:0000910	cytotoxic T cell	lexical			matched 'Cytotoxic T Lymphocyte'
+Fetal Thymocyte	Fetal thymocyte	T cell	CL:0002404	fetal thymocyte	direct			
+CD4 Naive	Naive CD4 T cell	T cell	CL:0000895	naive thymus-derived CD4-positive, alpha-beta T cell	lexical			all words of 'CD4 Naive' found in the term
+CD8 Naive	Naive CD8 T cell	T cell	CL:0000900	naive thymus-derived CD8-positive, alpha-beta T cell	lexical			all words of 'CD8 Naive' found in the term
+Naive T cell	Naive T cell	T cell	CL:0000898	naive T cell	direct			
+NaiveT	Naive T cell	T cell	CL:0000898	naive T cell	direct			
+Naive T	Naive T cell	T cell	CL:0000898	naive T cell	direct			
+Treg	Regulatory T cell	T cell	CL:0000815	regulatory T cell	direct			abbreviation matched a CL synonym; check it
+Tregs	Regulatory T cell	T cell	CL:0000815	regulatory T cell	direct			abbreviation matched a CL synonym; check it
+T cell	T cell	T cell	CL:0000084	T cell	direct			
+T	T cell	T cell	CL:0000084	T cell	direct			abbreviation matched a CL synonym; check it
+2-T cell	T cell	T cell	CL:0000084	T cell	direct			
+30-T cell	T cell	T cell	CL:0000084	T cell	direct			
+MAIT	T cell	T cell	CL:0000940	mucosal-associated invariant T cell	lexical			abbreviation 'MAIT' is ambiguous without an LLM; check it
+T Proliferating	T cell	T cell	CL:4033069	cycling T cell	direct			
+T cells	T cell	T cell	CL:0000084	T cell	direct			
+TNK_Like	TNK cell	T cell			unmapped			
+Mitochondria	Mitochondria-rich cell	Unclassified cell			unmapped			
+Malignant cells	Unclassified cell	Unclassified cell	CL:0001064	malignant cell	direct			
+13_Unk	Unknown	Unclassified cell			unknown			
+26_Unk	Unknown	Unclassified cell			unknown			
+14_Unk	Unknown	Unclassified cell			unknown			
+Unknown	Unknown	Unclassified cell			unknown			
+Unknown_1	Unknown	Unclassified cell			unknown			
+Unknown_2	Unknown	Unclassified cell			unknown			
+Healthy_Like	Unknown	Unclassified cell			unmapped			
+Progenitor_Like	Unknown	Unclassified cell	CL:0011026	progenitor cell	direct			
+precursor cells	Unknown	Unclassified cell	CL:0011115	precursor cell	direct			
+cycling cell	Unknown	Unclassified cell			unmapped			
+Proliferation cells	Unknown	Unclassified cell			unmapped			
+Proliferation cells1	Unknown	Unclassified cell			unmapped			
+Proliferation cells2	Unknown	Unclassified cell			unmapped			

@@ -11,8 +11,8 @@ import pandas as pd
 from .mapper import CellOntologyMapper, Query
 
 OUTPUT_COLUMNS = [
-    "mapped_id", "mapped_label", "mapped_ontology", "method", "score",
-    "expanded_label", "cleaned_label", "note",
+    "mapped_id", "mapped_label", "method", "score",
+    "expanded_label", "note",
 ]
 
 

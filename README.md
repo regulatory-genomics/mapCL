@@ -92,7 +92,7 @@ map_adata(adata, "cell_type", mapper=mapper)  # adds obs cl_id, cl_label, cl_met
 ```
 
 The output is the input table plus `mapped_id`, `mapped_label`,
-`mapped_ontology`, `method`, `score` and `note`.
+`method`, `score`, `expanded_label` and `note`.
 
 ## Agent (optional)
 

@@ -123,6 +123,43 @@ def test_expansion_feeds_direct_match_and_search(ontology):
     assert [c[0] for c in ols.calls][:2] == ["Kupffer cell", "hepatic macrophage"]
 
 
+def test_fix1_shortened_forms_of_expanded_name_are_searched(ontology):
+    # OLS has no hit for the full expansion, only for the form without "fetal"
+    ols = FakeOLS({("liver sinusoidal endothelial cell", "cl"): [cl("CL:1000398", "x")]})
+    def respond(schema, prompt):
+        if schema is Expansion:
+            return Expansion(cell_type="fetal liver sinusoidal endothelial cell", synonyms=[])
+        return Assessment(best_index=1, score=8, reason="same cell, fetal stage")
+    r = make(ontology, ols, FakeLLM(respond), expand=True).map_one("FLSEC")
+    assert (r.mapped_id, r.method) == ("CL:1000398", "llm")
+    searched = [c[0] for c in ols.calls]
+    assert searched.index("liver sinusoidal endothelial cell") < searched.index("FLSEC")
+
+
+def test_fix1_shortening_keeps_two_content_words(ontology):
+    from cl_mapper.mapper import _expanded_forms
+    forms = _expanded_forms(["subicular pyramidal neuron", "chondrocyte progenitor cell"])
+    assert "pyramidal neuron" in forms
+    assert "progenitor cell" not in forms
+
+
+def test_fix2_abbreviation_resolved_by_expansion_is_not_capped(ontology):
+    llm = FakeLLM(lambda schema, _: Expansion(cell_type="Kupffer cell", synonyms=[])
+                  if schema is Expansion else Assessment(best_index=1, score=9, reason="r"))
+    make(ontology, FakeOLS(), llm, expand=True).map_one(Query("KC", tissue="liver"))
+    assess_prompt = llm.prompts[-1]
+    assert "interpreted as 'Kupffer cell'" in assess_prompt
+    assert "score at most 5" not in assess_prompt
+
+
+def test_fix2_unresolved_abbreviation_keeps_cap(ontology):
+    llm = FakeLLM(lambda schema, _: Expansion(cell_type="unclear abbreviation", synonyms=[])
+                  if schema is Expansion else Assessment(best_index=1, score=3, reason="r"))
+    ols = FakeOLS({("xq", "cl"): [cl("CL:0000235", "m")]})
+    make(ontology, ols, llm, expand=True, fallback_ontologies=()).map_one("XQ")
+    assert "score at most 5" in llm.prompts[-1]
+
+
 def test_expansion_without_assessment_uses_expanded_direct(ontology):
     llm = FakeLLM(lambda schema, _: Expansion(cell_type="natural killer cell", synonyms=[]))
     r = make(ontology, FakeOLS(), llm, expand=True, assess=False).map_one("NKs")

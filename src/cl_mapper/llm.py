@@ -51,8 +51,7 @@ ASSESS_PROMPT = ChatPromptTemplate.from_messages([
      "Judge by cell identity and function, not wording. Use the context when given. "
      "If two candidates fit equally, prefer the one whose function matches the label best.\n"
      "A candidate that is not a cell type (organelle, tissue, drug, gene, disease) scores 1.\n"
-     "If the label is an abbreviation with several plausible meanings and the context "
-     "does not decide between them, score at most 5.\n\n"
+     "{hint}\n\n"
      "User label: {label}\n{context}\n\nCandidates:\n{candidates}"),
 ])
 
@@ -122,5 +121,5 @@ def expansion_chain(llm: BaseChatModel) -> Runnable:
 
 
 def assessment_chain(llm: BaseChatModel) -> Runnable:
-    """Inputs: label, context, candidates. Output: :class:`Assessment`."""
+    """Inputs: label, context, hint, candidates. Output: :class:`Assessment`."""
     return ASSESS_PROMPT | _structured(llm, Assessment)

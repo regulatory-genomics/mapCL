@@ -39,6 +39,11 @@ from .text import (
     without_qualifiers,
 )
 
+AMBIGUOUS_HINT = ("If the label is an abbreviation with several plausible meanings and the "
+                  "context does not decide between them, score at most 5.")
+RESOLVED_HINT = ("The label was interpreted as '{expanded}', which is the CL term '{term}'. "
+                 "Judge the candidates against this interpretation; do not lower the score "
+                 "only because the label is an abbreviation.")
 _TAXON_TOKENS = frozenset({"mmus", "primate", "human", "mouse", "homo", "sapien", "sapiens", "sensu"})
 
 logger = logging.getLogger(__name__)
@@ -165,10 +170,16 @@ class CellOntologyMapper:
             return _accept(res, _from_term(term), "direct")
 
         expanded: list[str] = []
+        hint = AMBIGUOUS_HINT
         if self._expand is not None:
             exp = self._expand.invoke({"label": q.label, "context": self._context(q)})
             res.expanded_label = exp.cell_type
-            expanded = _dedupe([exp.cell_type, *exp.synonyms[:2]])
+            expanded = _expanded_forms([exp.cell_type, *exp.synonyms[:2]])
+            # Fix 2: an abbreviation whose expansion is itself a CL term is not
+            # ambiguous any more, so the assessor must not cap its score.
+            if resolved := self._direct(clean_label(exp.cell_type)) or self._direct(
+                    without_qualifiers(clean_label(exp.cell_type))):
+                hint = RESOLVED_HINT.format(expanded=exp.cell_type, term=resolved.label)
         queries = _dedupe([*expanded, *_shortened(q.label, cleaned)])
 
         if self._assess is None:
@@ -176,11 +187,11 @@ class CellOntologyMapper:
 
         if q.tissue:
             queries.append(f"{q.tissue} {cleaned}")
-        if self._assess_step(q, res, self._candidates(q, queries, ("cl",)), "llm"):
+        if self._assess_step(q, res, self._candidates(q, queries, ("cl",)), "llm", hint):
             return res
         if self.fallback_ontologies:
             fallback = self._candidates(q, queries[:3], self.fallback_ontologies)
-            self._assess_step(q, res, fallback, "llm_fallback")
+            self._assess_step(q, res, fallback, "llm_fallback", hint)
         return res
 
     def _map_safe(self, q: Query) -> MappingResult:
@@ -263,11 +274,12 @@ class CellOntologyMapper:
                     merged[hits[rank].id] = hits[rank]
         return list(merged.values())[: self.max_candidates]
 
-    def _assess_step(self, q: Query, res: MappingResult, cands: list[Candidate], method: str) -> bool:
+    def _assess_step(self, q: Query, res: MappingResult, cands: list[Candidate], method: str,
+                     hint: str) -> bool:
         """Let the LLM pick a candidate; record score and reason; True if accepted."""
         if not cands:
             return False
-        a = self._assess.invoke({"label": q.label, "context": self._context(q),
+        a = self._assess.invoke({"label": q.label, "context": self._context(q), "hint": hint,
                                  "candidates": llm_mod.format_candidates(cands)})
         if not (1 <= a.best_index <= len(cands) and 1 <= a.score <= 10):
             res.note = f"LLM returned invalid index/score ({a.best_index}, {a.score})"
@@ -290,6 +302,22 @@ def _dedupe(items: Iterable[str]) -> list[str]:
 
 def _key(q: Query) -> tuple:
     return match_key(clean_label(q.label)), q.tissue, q.species, q.cell_state
+
+
+def _expanded_forms(names: Iterable[str]) -> list[str]:
+    """Fix 1: search shorter forms of the LLM's names too, as OLS needs every word.
+
+    "fetal ventricular cardiac muscle cell" adds "ventricular cardiac muscle cell";
+    "subicular pyramidal neuron" adds "pyramidal neuron". A form must keep two
+    content words, so "chondrocyte progenitor cell" does not add "progenitor cell".
+    """
+    out: list[str] = []
+    for name in names:
+        name = clean_label(name)
+        plain = without_qualifiers(name)
+        out += [name, plain]
+        out += [v for v in without_leading_words(plain)[:1] if len(content_tokens(v)) >= 2]
+    return [v for v in _dedupe(out) if content_tokens(v) - QUALIFIERS]
 
 
 def _shortened(raw: str, cleaned: str) -> list[str]:

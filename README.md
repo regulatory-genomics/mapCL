@@ -1,9 +1,10 @@
-# CellOntologyMapper
+# mapCL
 
-Map free-text cell type labels ("16_T cells", "KC", "Liver endothelial") to
-[Cell Ontology](https://obofoundry.org/ontology/cl.html) (CL) terms. The tool
-searches the [OLS4](https://www.ebi.ac.uk/ols4) API. An LLM is optional: it can
-expand short labels and check candidates before they are accepted.
+Cell Ontology Mapper.
+
+Map free-text cell type labels to [Cell Ontology](https://obofoundry.org/ontology/cl.html) 
+(CL) terms. The tool searches the [OLS4](https://www.ebi.ac.uk/ols4) API. 
+An LLM is optional: it can expand short labels and check candidates before they are accepted.
 
 ## How it works
 
@@ -49,7 +50,7 @@ in `note`. Review these rows, or run with an LLM.
 ## Install
 
 ```bash
-git clone <repo-url> cell-ontology-mapper && cd cell-ontology-mapper
+git clone https://github.com/regulatory-genomics/mapCL.git && cd mapCL
 pip install -e .            # Python ≥ 3.10; use ".[anndata]" for AnnData
 ```
 
@@ -70,18 +71,18 @@ For another model pass `--model`, e.g. `--model openai:gpt-6-luna` with
 The input is a TSV or CSV file with one column of cell type labels.
 
 ```bash
-clmap map cells.tsv -o mapped.tsv -c cell_type --tissue-col tissue --expand
-clmap map cells.tsv -o mapped.tsv -c cell_type --no-llm
+mapcl map cells.tsv -o mapped.tsv -c cell_type --tissue-col tissue --expand
+mapcl map cells.tsv -o mapped.tsv -c cell_type --no-llm
 ```
 
 `--expand` lets the LLM spell out abbreviations first, which helps with
-cluster labels. `clmap map -h` lists the other options (species column, study
+cluster labels. `mapcl map -h` lists the other options (species column, study
 context, score cutoff).
 
 In Python:
 
 ```python
-from cl_mapper import CellOntologyMapper, make_chat_model, map_dataframe, map_adata
+from mapcl import CellOntologyMapper, make_chat_model, map_dataframe, map_adata
 
 mapper = CellOntologyMapper(make_chat_model(), expand=True)  # CellOntologyMapper() = no LLM
 out = map_dataframe(df, "cell_type", tissue_col="tissue", mapper=mapper)
@@ -94,16 +95,16 @@ The output is the input table plus `mapped_id`, `mapped_label`,
 ## Agent (optional)
 
 A LangChain agent for hard labels. It wraps the fixed pipeline, using OLS search 
-and CL lookup as tools. Use `clmap map` for batch work.
+and CL lookup as tools. Use `mapcl map` for batch work.
 
 ```bash
-clmap agent "What CL term fits 'Mono/Mac_3' from lung? It expresses CD14 and MARCO."
+mapcl agent "What CL term fits 'Mono/Mac_3' from lung? It expresses CD14 and MARCO."
 ```
 
 ## Reference data
 
-`src/cl_mapper/data/cl_terms.tsv` holds all non-obsolete CL terms (release
-2026-06-08). `clmap build-db` updates it from OLS4.
+`src/mapcl/data/cl_terms.tsv` holds all non-obsolete CL terms (release
+2026-06-08). `mapcl build-db` updates it from OLS4.
 
 ## License and citation
 

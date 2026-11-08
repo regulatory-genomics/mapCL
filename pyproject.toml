@@ -3,7 +3,7 @@ requires = ["hatchling>=1.25"]
 build-backend = "hatchling.build"
 
 [project]
-name = "cell-ontology-mapper"
+name = "mapCL"
 version = "0.1.0"
 description = "Map free-text cell type labels to Cell Ontology terms via OLS4, with optional LLM help."
 readme = "README.md"
@@ -24,11 +24,11 @@ anndata = ["anndata>=0.10"]
 dev = ["pytest>=8", "anndata>=0.10"]
 
 [project.scripts]
-clmap = "cl_mapper.cli:main"
+mapcl = "mapcl.cli:main"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/cl_mapper"]
+packages = ["src/mapcl"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-markers = ["network: calls the live OLS4 API (run with CLMAP_LIVE=1)"]
+markers = ["network: calls the live OLS4 API (run with MAPCL_LIVE=1)"]

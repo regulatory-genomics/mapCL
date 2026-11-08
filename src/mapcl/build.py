@@ -16,10 +16,10 @@ def build_cl_table(out_dir: str | Path | None = None, ols: OLSClient | None = No
 
     Definitions come from IAO:0000115 only, so the long ChatGPT-generated
     "extended descriptions" in CL are not included. By default the files are
-    written into the ``cl_mapper/data`` package folder.
+    written into the ``mapcl/data`` package folder.
     """
     ols = ols or OLSClient(timeout=120)
-    out = Path(out_dir) if out_dir else Path(str(resources.files("cl_mapper.data")))
+    out = Path(out_dir) if out_dir else Path(str(resources.files("mapcl.data")))
     out.mkdir(parents=True, exist_ok=True)
     version = ols.ontology_version("cl")
     terms = list(ols.iter_terms("cl"))

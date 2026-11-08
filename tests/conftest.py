@@ -7,8 +7,8 @@ from collections.abc import Callable
 import pytest
 from langchain_core.runnables import RunnableLambda
 
-from cl_mapper.ols import Candidate
-from cl_mapper.ontology import CellOntology, Term
+from mapcl.ols import Candidate
+from mapcl.ontology import CellOntology, Term
 
 TERMS = [
     Term("CL:0000084", "T cell", "A lymphocyte with a T cell receptor.", ("T-cell", "T lymphocyte")),

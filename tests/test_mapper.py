@@ -1,8 +1,8 @@
 import pytest
 
-from cl_mapper.llm import Assessment, Expansion
-from cl_mapper.mapper import CellOntologyMapper, Query
-from cl_mapper.ols import Candidate, OLSError
+from mapcl.llm import Assessment, Expansion
+from mapcl.mapper import CellOntologyMapper, Query
+from mapcl.ols import Candidate, OLSError
 
 from .conftest import FakeLLM, FakeOLS, cl
 
@@ -137,7 +137,7 @@ def test_fix1_shortened_forms_of_expanded_name_are_searched(ontology):
 
 
 def test_fix1_shortening_keeps_two_content_words(ontology):
-    from cl_mapper.mapper import _expanded_forms
+    from mapcl.mapper import _expanded_forms
     forms = _expanded_forms(["subicular pyramidal neuron", "chondrocyte progenitor cell"])
     assert "pyramidal neuron" in forms
     assert "progenitor cell" not in forms

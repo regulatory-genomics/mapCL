@@ -1,7 +1,7 @@
 import pytest
 
-from cl_mapper.ontology import load_bundled
-from cl_mapper.text import (
+from mapcl.ontology import load_bundled
+from mapcl.text import (
     clean_label,
     is_short_code,
     is_unknown,

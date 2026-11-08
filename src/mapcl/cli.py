@@ -1,4 +1,4 @@
-"""Command line interface: ``clmap map``, ``clmap agent``, ``clmap build-db``."""
+"""Command line interface: ``mapcl map``, ``mapcl agent``, ``mapcl build-db``."""
 
 from __future__ import annotations
 
@@ -12,13 +12,13 @@ from collections import Counter
 def _llm_args(p: argparse.ArgumentParser, optional: bool) -> None:
     from .llm import DEFAULT_MODEL, DEFAULT_REASONING_EFFORT
 
-    p.add_argument("--model", default=os.getenv("CLMAP_MODEL", DEFAULT_MODEL),
-                   help=f'LangChain "provider:model" (env CLMAP_MODEL; default {DEFAULT_MODEL})')
+    p.add_argument("--model", default=os.getenv("MAPCL_MODEL", DEFAULT_MODEL),
+                   help=f'LangChain "provider:model" (env MAPCL_MODEL; default {DEFAULT_MODEL})')
     p.add_argument("--reasoning-effort",
-                   default=os.getenv("CLMAP_REASONING_EFFORT", DEFAULT_REASONING_EFFORT or "none"),
+                   default=os.getenv("MAPCL_REASONING_EFFORT", DEFAULT_REASONING_EFFORT or "none"),
                    help="reasoning effort for OpenAI reasoning models, e.g. high (default %(default)s)")
-    p.add_argument("--base-url", default=os.getenv("CLMAP_BASE_URL"),
-                   help="API endpoint (env CLMAP_BASE_URL; else the provider's own variable)")
+    p.add_argument("--base-url", default=os.getenv("MAPCL_BASE_URL"),
+                   help="API endpoint (env MAPCL_BASE_URL; else the provider's own variable)")
     if optional:
         p.add_argument("--no-llm", action="store_true",
                        help="no LLM: direct match + word-overlap search only")
@@ -77,7 +77,7 @@ def _cmd_build(args) -> int:
 
 
 def build_parser() -> argparse.ArgumentParser:
-    parser = argparse.ArgumentParser(prog="clmap", description=__doc__)
+    parser = argparse.ArgumentParser(prog="mapcl", description=__doc__)
     parser.add_argument("-v", "--verbose", action="store_true")
     sub = parser.add_subparsers(dest="command", required=True)
 

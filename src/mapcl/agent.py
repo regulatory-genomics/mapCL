@@ -2,7 +2,7 @@
 
 The agent wraps the fixed pipeline as tools. Use it for interactive work on
 hard labels ("what could 'Mono/Mac_3' in lung be?"). Batch mapping should go
-through :class:`~cl_mapper.mapper.CellOntologyMapper`, which is deterministic.
+through :class:`~mapcl.mapper.CellOntologyMapper`, which is deterministic.
 """
 
 from __future__ import annotations

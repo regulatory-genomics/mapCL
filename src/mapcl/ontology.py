@@ -109,13 +109,13 @@ def write_tsv(terms: list[Term], path: str | Path) -> None:
 
 
 def bundled_metadata() -> dict:
-    meta = resources.files("cl_mapper.data").joinpath(META_FILE)
+    meta = resources.files("mapcl.data").joinpath(META_FILE)
     return json.loads(meta.read_text(encoding="utf-8")) if meta.is_file() else {}
 
 
 @lru_cache(maxsize=1)
 def load_bundled() -> CellOntology:
-    """Load the CL table shipped in ``cl_mapper/data`` (built by ``clmap build-db``)."""
-    path = resources.files("cl_mapper.data").joinpath(TERMS_FILE)
+    """Load the CL table shipped in ``mapcl/data`` (built by ``mapcl build-db``)."""
+    path = resources.files("mapcl.data").joinpath(TERMS_FILE)
     with resources.as_file(path) as p:
         return CellOntology.from_tsv(p, version=bundled_metadata().get("cl_version", ""))

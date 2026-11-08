@@ -1,15 +1,15 @@
-"""Checks against the real OLS4 API. Run with: CLMAP_LIVE=1 pytest tests/test_live.py"""
+"""Checks against the real OLS4 API. Run with: MAPCL_LIVE=1 pytest tests/test_live.py"""
 
 import os
 
 import pytest
 
-from cl_mapper.mapper import CellOntologyMapper, Query
-from cl_mapper.ols import OLSClient
+from mapcl.mapper import CellOntologyMapper, Query
+from mapcl.ols import OLSClient
 
 pytestmark = [
     pytest.mark.network,
-    pytest.mark.skipif(not os.getenv("CLMAP_LIVE"), reason="set CLMAP_LIVE=1 to call OLS4"),
+    pytest.mark.skipif(not os.getenv("MAPCL_LIVE"), reason="set MAPCL_LIVE=1 to call OLS4"),
 ]
 
 

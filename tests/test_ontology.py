@@ -1,4 +1,4 @@
-from cl_mapper.ontology import CellOntology, Term, load_bundled, write_tsv
+from mapcl.ontology import CellOntology, Term, load_bundled, write_tsv
 
 
 def test_direct_match_label_and_synonym(ontology):

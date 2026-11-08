@@ -5,10 +5,10 @@ import pytest
 from langchain_core.language_models.fake_chat_models import GenericFakeChatModel
 from langchain_core.messages import AIMessage
 
-from cl_mapper.agent import build_agent
-from cl_mapper.cli import main
-from cl_mapper.io import OUTPUT_COLUMNS, map_adata, map_dataframe, map_labels
-from cl_mapper.mapper import CellOntologyMapper
+from mapcl.agent import build_agent
+from mapcl.cli import main
+from mapcl.io import OUTPUT_COLUMNS, map_adata, map_dataframe, map_labels
+from mapcl.mapper import CellOntologyMapper
 
 from .conftest import FakeOLS, cl
 
@@ -55,8 +55,8 @@ def test_map_adata(mapper):
 
 
 def test_cli_map_without_llm(tmp_path, monkeypatch, ontology):
-    monkeypatch.setattr("cl_mapper.mapper.load_bundled", lambda: ontology)
-    monkeypatch.setattr("cl_mapper.mapper.OLSClient", lambda: FakeOLS())
+    monkeypatch.setattr("mapcl.mapper.load_bundled", lambda: ontology)
+    monkeypatch.setattr("mapcl.mapper.OLSClient", lambda: FakeOLS())
     src = tmp_path / "in.tsv"
     pd.DataFrame({"label": ["B cells", "Treg"]}).to_csv(src, sep="\t", index=False)
     assert main(["map", str(src), "-o", str(tmp_path / "out.tsv"), "-c", "label", "--no-llm"]) == 0
@@ -65,7 +65,7 @@ def test_cli_map_without_llm(tmp_path, monkeypatch, ontology):
 
 
 def test_cli_expand_needs_model(tmp_path, monkeypatch):
-    monkeypatch.delenv("CLMAP_MODEL", raising=False)
+    monkeypatch.delenv("MAPCL_MODEL", raising=False)
     assert main(["map", "x.tsv", "-o", "y.tsv", "-c", "l", "--expand", "--no-llm"]) == 2
 
 
